@@ -533,7 +533,54 @@ padding:17px;
 .voxel-message{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);padding:15px 20px;border-radius:14px;font-weight:800;display:none;z-index:10;text-align:center}.voxel-start{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;background:rgba(0,0,0,.78);padding:28px;border-radius:20px;text-align:center;pointer-events:auto}.voxel-start button{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;background:#7c5cff;color:#fff;margin:5px}
 .game-area.fullscreen-game{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;min-height:100vh!important;margin:0!important;padding:25px!important;z-index:999999!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;border:0!important;border-radius:0!important;overflow:auto!important;background:#070b14}
 @media(max-width:700px){.voxel-game{height:78vh;min-height:520px}.voxel-title{font-size:18px}.voxel-help{max-width:260px;font-size:11px}.voxel-inventory{width:170px}.voxel-slot{width:34px;height:34px}}
+
+/* ================= BLOCKLANDS GAME ================= */
+.blocklands-wrap{position:relative;width:min(1200px,96vw);height:min(820px,92vh);min-height:560px;border-radius:22px;overflow:hidden;background:#0b1020;box-shadow:0 20px 70px rgba(0,0,0,.55);font-family:Arial,sans-serif;user-select:none}
+#blockCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
+.blocklands-ui{position:absolute;inset:0;pointer-events:none;color:#fff;text-shadow:0 2px 4px #000}
+.blocklands-top{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.blocklands-panel{background:rgba(8,12,24,.72);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:14px;padding:9px 12px}
+.blocklands-title{font-size:22px;font-weight:900}
+.blocklands-stats{font-size:14px;line-height:1.55}
+.blocklands-help{position:absolute;left:14px;top:84px;max-width:370px;font-size:13px}
+.blocklands-hotbar{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:6px;pointer-events:auto}
+.bl-slot{width:58px;height:58px;border-radius:10px;border:2px solid rgba(255,255,255,.28);background:rgba(10,15,30,.8);display:flex;align-items:center;justify-content:center;position:relative;font-size:25px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.bl-slot.active{border-color:#fff;box-shadow:0 0 0 3px rgba(96,165,250,.65),0 4px 16px rgba(0,0,0,.4)}
+.bl-slot b{position:absolute;right:5px;bottom:2px;font-size:12px}
+.bl-slot span{position:absolute;left:5px;top:2px;font-size:11px;opacity:.8}
+.blocklands-start{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,90%);text-align:center;background:rgba(5,9,18,.88);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.45);pointer-events:auto}
+.blocklands-start h2{font-size:34px;margin:0 0 8px}
+.blocklands-start p{color:#cbd5e1;line-height:1.5}
+.blocklands-start button{border:0;border-radius:13px;padding:14px 22px;font-size:18px;font-weight:900;cursor:pointer;background:linear-gradient(90deg,#2563eb,#7c3aed);color:#fff;margin:5px}
+.blocklands-close{position:absolute;right:14px;bottom:14px;border:1px solid rgba(255,255,255,.2);background:rgba(8,12,24,.8);color:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;pointer-events:auto}
+.blocklands-msg{position:absolute;left:50%;top:18%;transform:translateX(-50%);background:rgba(0,0,0,.72);border-radius:12px;padding:10px 14px;font-weight:800;opacity:0;transition:opacity .18s}
+.blocklands-msg.show{opacity:1}
+@media(max-width:700px){.blocklands-wrap{width:100vw;height:100vh;min-height:0;border-radius:0}.blocklands-help{max-width:260px;font-size:11px}.bl-slot{width:45px;height:45px;font-size:20px}.blocklands-title{font-size:18px}.blocklands-start h2{font-size:27px}}
+
+/* ================= 3D BLOCKLANDS ================= */
+.blocklands-3d-wrap{position:relative;width:min(1400px,98vw);height:min(820px,86vh);min-height:560px;border-radius:24px;overflow:hidden;background:#08121f;border:1px solid #334155;box-shadow:0 25px 80px rgba(0,0,0,.45);}
+#block3d{width:100%;height:100%;display:block;touch-action:none;}
+.bl3d-ui{position:absolute;inset:0;pointer-events:none;font-family:Arial,Helvetica,sans-serif;text-shadow:0 2px 4px rgba(0,0,0,.8)}
+.bl3d-top{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;}
+.bl3d-panel{background:rgba(5,10,18,.62);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:11px 14px;color:white;}
+.bl3d-title{font-size:22px;font-weight:900}.bl3d-stats{font-size:14px;margin-top:4px}.bl3d-hint{font-size:12px;color:#d1d5db;margin-top:5px;line-height:1.35}
+.bl3d-crosshair{position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);}
+.bl3d-crosshair:before,.bl3d-crosshair:after{content:"";position:absolute;background:white;opacity:.9;box-shadow:0 1px 2px #000}.bl3d-crosshair:before{width:2px;height:20px;left:9px;top:0}.bl3d-crosshair:after{width:20px;height:2px;left:0;top:9px}
+.bl3d-hotbar{position:absolute;left:50%;bottom:15px;transform:translateX(-50%);display:flex;gap:7px;pointer-events:auto;background:rgba(5,10,18,.56);padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
+.bl3d-slot{width:58px;height:58px;border-radius:11px;border:2px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-size:26px;position:relative;cursor:pointer;box-shadow:inset 0 0 18px rgba(0,0,0,.18)}
+.bl3d-slot.active{border-color:#facc15;box-shadow:0 0 0 2px rgba(250,204,21,.25),inset 0 0 18px rgba(250,204,21,.12);transform:translateY(-4px)}
+.bl3d-slot small{font-size:10px;opacity:.8}.bl3d-slot b{position:absolute;right:5px;bottom:3px;font-size:12px}
+.bl3d-msg{position:absolute;left:50%;top:61%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:9px 14px;border-radius:12px;color:white;font-weight:800;opacity:0;transition:opacity .15s;white-space:nowrap}
+.bl3d-msg.show{opacity:1}
+.bl3d-start{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(2,6,23,.55),rgba(2,6,23,.86));pointer-events:auto;z-index:30}
+.bl3d-start-card{width:min(620px,92%);background:rgba(8,15,28,.9);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:30px;text-align:center;color:white;box-shadow:0 25px 80px rgba(0,0,0,.45)}
+.bl3d-start-card h2{font-size:40px;margin:0 0 8px}.bl3d-start-card p{color:#cbd5e1;line-height:1.5}.bl3d-btn{border:0;border-radius:14px;padding:13px 18px;font-weight:900;cursor:pointer;margin:5px;background:linear-gradient(90deg,#2563eb,#7c3aed);color:white;font-size:16px}.bl3d-btn:hover{transform:translateY(-2px)}
+.bl3d-badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);margin-bottom:10px;font-weight:800;font-size:12px}
+.bl3d-damage{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-size:54px;font-weight:900;color:#fff;opacity:0;pointer-events:none}.bl3d-damage.show{animation:blDamage .45s ease-out}@keyframes blDamage{0%{opacity:1;transform:translate(-50%,-30%)}100%{opacity:0;transform:translate(-50%,-110%)}}
+@media(max-width:700px){.blocklands-3d-wrap{height:80vh;min-height:520px}.bl3d-title{font-size:17px}.bl3d-panel{padding:8px 10px}.bl3d-hint{display:none}.bl3d-slot{width:46px;height:46px;font-size:22px}.bl3d-hotbar{gap:4px}.bl3d-start-card h2{font-size:28px}}
+
 </style>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
 
 <body>
@@ -621,6 +668,10 @@ Play my custom games — no downloads required!
 
 <button class="game-button" onclick="startQuiz()">
 🧠 Minecraft Quiz
+</button>
+
+<button class="game-button" onclick="startBlocklands()">
+🌎 Blocklands Survival
 </button>
 
 </div>
@@ -1057,7 +1108,6 @@ const area=document.getElementById("gameArea");
 function showGame(html){
 
 area.innerHTML=html;
-
 area.classList.add("show","fullscreen-game");
 document.body.style.overflow="hidden";
 
@@ -1067,11 +1117,15 @@ function closeGame(){
 clearTimeout(reactionTimer);
 clearInterval(dodgeInterval);
 document.onkeydown=null;
+if(window.blocklandsCleanup) window.blocklandsCleanup();
 area.classList.remove("show","fullscreen-game");
 area.innerHTML="";
 document.body.style.overflow="";
 }
 
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape" && area.classList.contains("show")) closeGame();
+});
 
 /* ================= REACTION RUSH ================= */
 
@@ -1575,6 +1629,105 @@ Object.entries(voxelState.inventory).forEach(([name,count])=>{const slot=documen
 }
 let voxelMessageTimer;
 function showVoxelMessage(text){const box=document.getElementById("voxelMessage");if(!box)return;box.textContent=text;box.style.display="block";clearTimeout(voxelMessageTimer);voxelMessageTimer=setTimeout(()=>box.style.display="none",900)}
+/* ================= BLOCKLANDS 3D ================= */
+let blocklands3dCleanup=null;
+function startBlocklands(){
+showGame(`
+<div class="blocklands-3d-wrap" id="blocklands3dWrap">
+<canvas id="block3d"></canvas>
+<div class="bl3d-ui">
+<div class="bl3d-top">
+<div class="bl3d-panel"><div class="bl3d-title">🌄 Blocklands 3D</div><div class="bl3d-stats" id="bl3dStats">❤️ 100 • 💎 0 • ⭐ 0</div><div class="bl3d-hint">WASD move • Mouse look • Space jump • Left click mine/attack • Right click place • 1–6 select • P save</div></div>
+<div class="bl3d-panel"><b id="bl3dTime">☀️ Day</b><br><small>Original sandbox world</small></div>
+</div>
+<div class="bl3d-crosshair"></div><div class="bl3d-msg" id="bl3dMsg"></div><div class="bl3d-damage" id="bl3dDamage">💥</div>
+<div class="bl3d-hotbar" id="bl3dHotbar"></div>
+</div>
+<div class="bl3d-start" id="bl3dStart"><div class="bl3d-start-card"><div class="bl3d-badge">✨ FULL 3D BROWSER GAME</div><h2>🌄 Blocklands 3D</h2><p>Explore a living original voxel world with lighting, shadows, water, trees, crystals and hostile slimes. Mine blocks, build, fight and survive.</p><button class="bl3d-btn" onclick="beginBlocklands3D(false)">▶ New World</button><button class="bl3d-btn" onclick="beginBlocklands3D(true)">💾 Continue</button></div></div>
+</div>`);
+}
+
+function beginBlocklands3D(load){
+ if(!window.THREE){alert('3D library did not load. Check your internet connection.');return;}
+ const wrap=document.getElementById('blocklands3dWrap'),canvas=document.getElementById('block3d'),start=document.getElementById('bl3dStart');
+ if(!wrap||!canvas)return;
+ start.style.display='none';
+ const THREE=window.THREE;
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+ renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+ renderer.outputColorSpace=THREE.SRGBColorSpace;
+ renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.12;
+ const scene=new THREE.Scene(); scene.background=new THREE.Color(0x8fd3ff); scene.fog=new THREE.Fog(0x8fd3ff,18,75);
+ const camera=new THREE.PerspectiveCamera(72,1,.08,120); camera.rotation.order='YXZ';
+ const hemi=new THREE.HemisphereLight(0xcbe9ff,0x5b4634,1.65); scene.add(hemi);
+ const sun=new THREE.DirectionalLight(0xfff1c2,2.2); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048); sun.shadow.camera.left=-38; sun.shadow.camera.right=38; sun.shadow.camera.top=38; sun.shadow.camera.bottom=-38; sun.shadow.bias=-0.0005; scene.add(sun);
+ const ambient=new THREE.AmbientLight(0x6b8cff,.35); scene.add(ambient);
+ const sunMesh=new THREE.Mesh(new THREE.SphereGeometry(2.2,24,24),new THREE.MeshBasicMaterial({color:0xffe59a})); scene.add(sunMesh);
+ const water=new THREE.Mesh(new THREE.BoxGeometry(1,0.08,1),new THREE.MeshStandardMaterial({color:0x2f9dff,transparent:true,opacity:.48,roughness:.08,metalness:.05}));
+ const matCache={};
+ function makeMat(type){if(matCache[type])return matCache[type];let c={grass:0x5f9f46,dirt:0x8b5a3c,stone:0x747b83,wood:0x8d633c,leaves:0x3d8c4a,crystal:0x61d5ff,sand:0xd7c07a,brick:0xa65744,glow:0xffd76a};let m=new THREE.MeshStandardMaterial({color:c[type]||0xffffff,roughness:type==='crystal'?.25:.82,metalness:type==='crystal'?.18:0}); if(type==='crystal'){m.emissive=new THREE.Color(0x0b789e);m.emissiveIntensity=1.2} matCache[type]=m;return m;}
+ const boxGeo=new THREE.BoxGeometry(1,1,1);
+ const world=new Map(), meshes=[], enemies=[], particles=[];
+ const W=44,H=18,D=44, saveKey='blocklands3dSaveV1';
+ const blockTypes=['grass','dirt','stone','wood','crystal','brick'];
+ const icons={grass:'🌿',dirt:'🟫',stone:'🪨',wood:'🪵',crystal:'💎',brick:'🧱'};
+ let inv={grass:18,dirt:12,stone:10,wood:8,crystal:0,brick:6},selected=0,score=0,kills=0,dayTime=0;
+ const p={x:22.5,z:22.5,y:4.2,vy:0,hp:100,food:100,yaw:0,pitch:0,ground:false};
+ const keys={}; let locked=false, last=performance.now(), frame=0, gameOver=false, saveStamp=0;
+ function key(x,y,z){return x+','+y+','+z} function get(x,y,z){return world.get(key(x,y,z))||null}
+ function setBlock(x,y,z,t){const k=key(x,y,z); if(t)world.set(k,t); else world.delete(k);}
+ function blockMesh(x,y,z,t){const m=new THREE.Mesh(boxGeo,makeMat(t));m.position.set(x+.5,y+.5,z+.5);m.castShadow=t!=='leaves';m.receiveShadow=true;m.userData={x,y,z,type:t};scene.add(m);meshes.push(m);return m;}
+ function removeMeshFor(x,y,z){for(let i=meshes.length-1;i>=0;i--){const m=meshes[i];if(m.userData.x===x&&m.userData.y===y&&m.userData.z===z){scene.remove(m);meshes.splice(i,1);return;}}}
+ function placeTree(x,z,base){for(let y=base;y<base+4;y++)setBlock(x,y,z,'wood');for(let dx=-2;dx<=2;dx++)for(let dz=-2;dz<=2;dz++)for(let dy=2;dy<=4;dy++)if(Math.abs(dx)+Math.abs(dz)+Math.random()*1.5<3.6)setBlock(x+dx,base+dy,z+dz,'leaves');}
+ function noise(x,z){let v=Math.sin(x*12.9898+z*78.233)*43758.5453;return v-Math.floor(v)}
+ function genWorld(){world.clear(); for(let x=0;x<W;x++)for(let z=0;z<D;z++){let h=Math.floor(3+noise(x*.7,z*.7)*5+Math.sin(x*.35)*1.6+Math.cos(z*.4)*1.1);h=Math.max(2,Math.min(9,h));for(let y=0;y<=h;y++){let t=y===h?'grass':y>h-3?'dirt':'stone';setBlock(x,y,z,t);} if(noise(x+11,z+4)>.84 && h>=4 && Math.abs(x-22)+Math.abs(z-22)>7)placeTree(x,z,h+1); if(noise(x+40,z+70)>.965 && h<6){setBlock(x,h,z,'crystal');}}
+ for(let x=0;x<W;x++)for(let z=0;z<D;z++){if(Math.hypot(x-22,z-22)<5){let h=topY(x,z);for(let y=h+1;y<12;y++)setBlock(x,y,z,null);}}
+ }
+ function topY(x,z){for(let y=H-1;y>=0;y--)if(get(x,y,z)&&get(x,y,z)!=='leaves')return y;return -1}
+ function buildScene(){for(const m of meshes)scene.remove(m);meshes.length=0; for(const [k,t] of world){const [x,y,z]=k.split(',').map(Number);if(t!=='leaves'||Math.random()<.75)blockMesh(x,y,z,t);}}
+ function addWater(){for(let x=0;x<W;x++)for(let z=0;z<D;z++){if(noise(x+99,z+17)<.11 && topY(x,z)<=3){const h=topY(x,z);const w=water.clone();w.position.set(x+.5,Math.max(3.15,h+.62),z+.5);scene.add(w);w.userData.water=true;}}}
+ function spawnEnemy(){for(let tries=0;tries<40;tries++){let x=2+Math.floor(Math.random()*(W-4)),z=2+Math.floor(Math.random()*(D-4));if(Math.hypot(x-p.x,z-p.z)<8)continue;let y=topY(x,z)+1;if(y<1)continue;let geo=new THREE.SphereGeometry(.52,16,12);let mat=new THREE.MeshStandardMaterial({color:0x61cf65,roughness:.72});let e=new THREE.Mesh(geo,mat);e.scale.y=.82;e.castShadow=true;e.position.set(x+.5,y+.5,z+.5);scene.add(e);enemies.push({mesh:e,x:x+.5,z:z+.5,y:y+.5,hp:40,cd:0});return;}}
+ function setupLoaded(){const d=JSON.parse(localStorage.getItem(saveKey)||'null');if(!d)return false;world.clear();for(const [k,v] of Object.entries(d.world||{}))world.set(k,v);Object.assign(p,d.p||{});inv=d.inv||inv;selected=d.selected||0;score=d.score||0;kills=d.kills||0;return true}
+ if(!(load&&setupLoaded()))genWorld(); buildScene(); addWater(); for(let i=0;i<6;i++)spawnEnemy();
+ p.y=topY(Math.floor(p.x),Math.floor(p.z))+1.72;
+ const clockSun=new THREE.Object3D(); scene.add(clockSun);
+ function respawn(){p.x=22.5;p.z=22.5;p.y=topY(22,22)+1.72;p.hp=100;p.food=90;p.vy=0;score=Math.max(0,score-35);say('💀 You passed out! -35 score');}
+ function say(t){const el=document.getElementById('bl3dMsg');if(!el)return;el.textContent=t;el.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>el.classList.remove('show'),1000)}
+ function dmgFx(){const el=document.getElementById('bl3dDamage');el.classList.remove('show');void el.offsetWidth;el.classList.add('show')}
+ function updateHotbar(){const h=document.getElementById('bl3dHotbar');if(!h)return;h.innerHTML='';blockTypes.forEach((t,i)=>{const d=document.createElement('div');d.className='bl3d-slot'+(i===selected?' active':'');d.innerHTML=`<small>${i+1}</small>${icons[t]}<b>${inv[t]||0}</b>`;d.onclick=()=>{selected=i;updateHotbar()};h.appendChild(d);});}
+ updateHotbar();
+ function resize(){const r=wrap.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}
+ resize(); window.addEventListener('resize',resize);
+ function pointerLock(){canvas.requestPointerLock?.();}
+ canvas.addEventListener('click',pointerLock);
+ function mouseMove(e){if(!locked)return;p.yaw-=e.movementX*.0022;p.pitch-=e.movementY*.0022;p.pitch=Math.max(-1.35,Math.min(1.35,p.pitch));}
+ function lockChange(){locked=document.pointerLockElement===canvas;say(locked?'🎯 Click to mine! ESC to unlock':'🖱️ Click the game to look around');}
+ document.addEventListener('pointerlockchange',lockChange);document.addEventListener('mousemove',mouseMove);
+ function kd(e){let k=e.key.toLowerCase();keys[k]=true;if(/^[1-6]$/.test(e.key)){selected=+e.key-1;updateHotbar();}if(k==='p'){save();}if(k==='escape'){locked=false}}
+ function ku(e){delete keys[e.key.toLowerCase()]}
+ document.addEventListener('keydown',kd);document.addEventListener('keyup',ku);
+ function raycast(){const ray=new THREE.Raycaster();ray.setFromCamera({x:0,y:0},camera);return ray.intersectObjects(meshes,false)[0]||null}
+ function mine(){const hit=raycast();if(!hit||hit.distance>5.7)return say('🔭 Too far away');const {x,y,z,type}=hit.object.userData;if(type==='leaves'){setBlock(x,y,z,null);removeMeshFor(x,y,z);say('🌿 Cleared leaves');return;} if(y===0)return say('🛑 Bedrock-like base cannot be mined');setBlock(x,y,z,null);removeMeshFor(x,y,z);inv[type]=(inv[type]||0)+1;score+=type==='crystal'?30:type==='stone'?3:5;say(`⛏️ +1 ${type}`);}
+ function place(){const hit=raycast();if(!hit||hit.distance>5.7)return say('🔭 Too far away');const type=blockTypes[selected];if((inv[type]||0)<=0)return say('📦 Out of '+type);const n=hit.face.normal;let x=hit.object.userData.x+n.x,y=hit.object.userData.y+n.y,z=hit.object.userData.z+n.z;if(y<0||y>=H||x<0||x>=W||z<0||z>=D||get(x,y,z))return say('🚫 Cannot place there'); if(Math.hypot(x+.5-p.x,z+.5-p.z)<1.2&&Math.abs(y+.5-p.y)<1.9)return say('🚫 Too close');setBlock(x,y,z,type);blockMesh(x,y,z,type);inv[type]--;say('🧱 Placed '+type);updateHotbar();}
+ function click(e){if(e.button===0){if(locked)mine();else pointerLock();}if(e.button===2&&locked){e.preventDefault();place();}}
+ canvas.addEventListener('mousedown',click);canvas.addEventListener('contextmenu',e=>e.preventDefault());
+ function move(dt){let dx=0,dz=0;if(keys.w||keys.arrowup)dz-=1;if(keys.s||keys.arrowdown)dz+=1;if(keys.a||keys.arrowleft)dx-=1;if(keys.d||keys.arrowright)dx+=1;if(dx||dz){let l=Math.hypot(dx,dz);dx/=l;dz/=l;let c=Math.cos(p.yaw),s=Math.sin(p.yaw);let vx=dx*c-dz*s,vz=dx*s+dz*c;let speed=keys.shift?6.4:4.6;let nx=p.x+vx*speed*dt,nz=p.z+vz*speed*dt;if(nx>.7&&nx<W-.7&&!isBlocked(nx,p.z,p.y))p.x=nx;if(nz>.7&&nz<D-.7&&!isBlocked(p.x,nz,p.y))p.z=nz;}
+ if((keys[' ']||keys.spacebar)&&p.ground){p.vy=7.2;p.ground=false;delete keys[' '];}
+ p.vy-=18*dt;p.y+=p.vy*dt;let ground=topY(Math.floor(p.x),Math.floor(p.z))+1.72;if(p.y<=ground){p.y=ground;p.vy=0;p.ground=true;} if(p.y<0)respawn();
+ }
+ function isBlocked(x,z,py){const bx=Math.floor(x),bz=Math.floor(z);for(let yy=Math.floor(py-1.55);yy<=Math.floor(py+.2);yy++)if(get(bx,yy,bz)&&get(bx,yy,bz)!=='leaves')return true;return false;}
+ function attackEnemies(){let best=null,bd=999;for(const e of enemies){const d=Math.hypot(e.x-p.x,e.z-p.z);if(d<3.2&&d<bd){bd=d;best=e;}}if(best){best.hp-=25;best.mesh.position.y+=.15;dmgFx();if(best.hp<=0){scene.remove(best.mesh);enemies.splice(enemies.indexOf(best),1);kills++;score+=40;say('⚔️ Slime defeated!');setTimeout(spawnEnemy,1200);}else say('⚔️ Hit for 25!');}else mine();}
+ function updateEnemies(dt){for(const e of enemies){let dx=p.x-e.x,dz=p.z-e.z,d=Math.hypot(dx,dz);e.cd-=dt;if(d<12&&d>1.15){e.x+=(dx/d)*1.15*dt;e.z+=(dz/d)*1.15*dt;let gy=topY(Math.floor(e.x),Math.floor(e.z))+1;e.y=gy+.48;e.mesh.position.set(e.x,e.y,e.z);e.mesh.scale.x=1+.06*Math.sin(performance.now()*.01);e.mesh.scale.z=1+.06*Math.sin(performance.now()*.01);}if(d<=1.2&&e.cd<=0){p.hp-=8;e.cd=.85;dmgFx();say('💥 Slime attack!');}}}
+ function save(){const obj={};world.forEach((v,k)=>obj[k]=v);localStorage.setItem(saveKey,JSON.stringify({world:obj,p,inv,selected,score,kills}));say('💾 World saved!');}
+ function updateDay(dt){dayTime=(dayTime+dt)%100;let phase=dayTime/100;let ang=phase*Math.PI*2-Math.PI/2;let sx=22+Math.cos(ang)*34,sy=18+Math.sin(ang)*30,sz=22+Math.sin(ang)*18;sun.position.set(sx,sy,sz);sunMesh.position.set(sx,sy,sz);let daylight=Math.max(.08,Math.sin(ang)*.5+.5);sun.intensity=.35+daylight*2.1;hemi.intensity=.45+daylight*1.3;scene.background.lerpColors?.();let sky=new THREE.Color().setHSL(.56,.65,.18+.34*daylight);scene.background.copy(sky);scene.fog.color.copy(sky);document.getElementById('bl3dTime').textContent=daylight>.42?'☀️ Day':'🌙 Night';}
+ function animate(now){if(gameOver)return;let dt=Math.min(.04,(now-last)/1000);last=now;move(dt);updateEnemies(dt);updateDay(dt);camera.position.set(p.x,p.y,p.z);camera.rotation.set(p.pitch,p.yaw,0);const st=document.getElementById('bl3dStats');if(st)st.textContent=`❤️ ${Math.max(0,Math.ceil(p.hp))} • 🍖 ${Math.max(0,Math.ceil(p.food))} • 💎 ${inv.crystal||0} • ⭐ ${score} • ⚔️ ${kills}`;p.food=Math.max(0,p.food-dt*.9);if(p.food<=0)p.hp-=dt*1.3;if(p.hp<=0)respawn();if(now-saveStamp>120000){saveStamp=now;save();}renderer.render(scene,camera);frame=requestAnimationFrame(animate);}
+ const oldCleanup=blocklands3dCleanup; if(oldCleanup)oldCleanup();
+ blocklands3dCleanup=()=>{cancelAnimationFrame(frame);window.removeEventListener('resize',resize);canvas.removeEventListener('click',pointerLock);canvas.removeEventListener('mousedown',click);canvas.removeEventListener('contextmenu',e=>e.preventDefault());document.removeEventListener('pointerlockchange',lockChange);document.removeEventListener('mousemove',mouseMove);document.removeEventListener('keydown',kd);document.removeEventListener('keyup',ku);if(document.pointerLockElement===canvas)document.exitPointerLock?.();renderer.dispose();blocklands3dCleanup=null;};
+ last=performance.now();requestAnimationFrame(animate);
+}
+
+
 /* ================= HIGH SCORES ================= */
 
 function saveScore(game,score){
