@@ -373,71 +373,6 @@ background:#f8fafc;
 display:block;
 }
 
-/* FULLSCREEN GAME OVERLAY */
-.game-area.fullscreen-game{
-position:fixed !important;
-top:0 !important;
-left:0 !important;
-right:0 !important;
-bottom:0 !important;
-width:100vw !important;
-height:100vh !important;
-min-height:100vh !important;
-margin:0 !important;
-padding:35px !important;
-z-index:999999 !important;
-display:flex !important;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-border:0 !important;
-border-radius:0 !important;
-overflow:auto !important;
-background:
-radial-gradient(circle at 15% 10%,#172554 0%,transparent 35%),
-radial-gradient(circle at 85% 90%,#3b0764 0%,transparent 35%),
-#070b14;
-}
-
-body.light .game-area.fullscreen-game{
-background:
-radial-gradient(circle at 15% 10%,#bfdbfe 0%,transparent 35%),
-radial-gradient(circle at 85% 90%,#ddd6fe 0%,transparent 35%),
-#f1f5f9;
-}
-
-@media(max-width:600px){
-.game-area.fullscreen-game{
-padding:20px 10px !important;
-}
-.game-area.fullscreen-game .aim-board{
-width:96vw;
-height:calc(100vh - 155px);
-min-height:350px;
-}
-}
-
-.game-area.fullscreen-game h2{
-font-size:clamp(30px,5vw,52px);
-}
-
-.game-area.fullscreen-game .aim-board{
-width:min(1100px,94vw);
-height:calc(100vh - 190px);
-min-height:420px;
-margin-top:15px;
-}
-
-.game-area.fullscreen-game .big-game-button{
-font-size:clamp(22px,3vw,32px);
-padding:25px 45px;
-}
-
-.game-area.fullscreen-game .quiz-option{
-font-size:18px;
-padding:16px;
-}
-
 .game-area h2{
 margin-top:0;
 }
@@ -490,8 +425,7 @@ box-shadow:0 0 25px rgba(239,68,68,.6);
 
 .aim-board{
 position:relative;
-height:calc(100vh - 190px);
-min-height:330px;
+height:330px;
 margin-top:20px;
 border:1px solid #334155;
 border-radius:15px;
@@ -581,6 +515,24 @@ padding:17px;
 
 }
 
+
+/* ===== ORIGINAL VOXEL QUEST ===== */
+.voxel-game{position:relative;width:min(1200px,96vw);height:min(720px,82vh);min-height:500px;overflow:hidden;border-radius:22px;background:#8ed6ff;box-shadow:0 20px 70px rgba(0,0,0,.45);font-family:Arial,sans-serif;user-select:none}
+.voxel-sky{position:absolute;inset:0;background:linear-gradient(#70c7ff 0%,#c7efff 68%,#9cdb74 68%,#70b84f 100%)}
+.voxel-cloud{position:absolute;width:150px;height:32px;background:#fff;border-radius:40px;opacity:.75}
+.voxel-cloud:before,.voxel-cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}
+.voxel-cloud:before{width:65px;height:65px;left:25px;top:-30px}.voxel-cloud:after{width:50px;height:50px;left:75px;top:-20px}
+.voxel-ground{position:absolute;left:0;right:0;bottom:0;height:32%;background:repeating-linear-gradient(90deg,#58a93d 0 42px,#4b9635 42px 84px);border-top:8px solid #3e7f2d}
+.voxel-dirt{position:absolute;left:0;right:0;bottom:0;height:23%;background:repeating-linear-gradient(90deg,#9a6237 0 42px,#89542f 42px 84px)}
+.voxel-block{position:absolute;width:48px;height:48px;border:3px solid rgba(0,0,0,.18);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08);cursor:pointer}
+.voxel-block.grass{background:linear-gradient(#67bd4b 0 22%,#8b5a36 22%)}.voxel-block.stone{background:#777}.voxel-block.ore{background:#666}.voxel-block.ore:after{content:"◆ ◆";color:#56c7ff;font-size:13px;position:absolute;left:7px;top:15px}.voxel-block.crystal{background:#7b4bb3}
+.voxel-ui{position:absolute;inset:0;pointer-events:none;color:white;text-shadow:0 2px 3px #000}.voxel-top{position:absolute;left:18px;right:18px;top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px}.voxel-title{font-size:24px;font-weight:900}.voxel-stats{background:rgba(0,0,0,.4);padding:8px 12px;border-radius:12px}
+.voxel-help{position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,.45);padding:10px 14px;border-radius:12px;font-size:14px;max-width:460px}
+.voxel-inventory{position:absolute;right:18px;bottom:18px;background:rgba(0,0,0,.5);padding:10px;border-radius:14px;display:flex;gap:6px;flex-wrap:wrap;width:220px;pointer-events:auto}.voxel-slot{width:42px;height:42px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.3);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;position:relative}.voxel-slot b{position:absolute;right:3px;bottom:1px;font-size:12px}
+.voxel-player{position:absolute;width:34px;height:54px;left:50%;bottom:31%;transform:translateX(-50%);z-index:5;pointer-events:none}.voxel-player-head{width:28px;height:28px;margin:auto;background:#f1bd91;border:3px solid #5d3929}.voxel-player-body{width:34px;height:24px;background:#5a78d6;border:3px solid #354785}.voxel-tool{position:absolute;width:8px;height:44px;background:#6d452a;right:-13px;top:25px;transform:rotate(-35deg)}
+.voxel-message{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);padding:15px 20px;border-radius:14px;font-weight:800;display:none;z-index:10;text-align:center}.voxel-start{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;background:rgba(0,0,0,.78);padding:28px;border-radius:20px;text-align:center;pointer-events:auto}.voxel-start button{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;background:#7c5cff;color:#fff;margin:5px}
+.game-area.fullscreen-game{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;min-height:100vh!important;margin:0!important;padding:25px!important;z-index:999999!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;border:0!important;border-radius:0!important;overflow:auto!important;background:#070b14}
+@media(max-width:700px){.voxel-game{height:78vh;min-height:520px}.voxel-title{font-size:18px}.voxel-help{max-width:260px;font-size:11px}.voxel-inventory{width:170px}.voxel-slot{width:34px;height:34px}}
 </style>
 </head>
 
@@ -1065,23 +1017,11 @@ card.classList.toggle(
 );
 
 });
-
-const gameCenter=document.getElementById("gameCenter");
-
-if(gameCenter){
-
-const matchesCategory=
-currentCategory==="all"||
-currentCategory==="custom";
-
-const matchesSearch=
-gameCenter.innerText.toLowerCase().includes(search);
-
-gameCenter.classList.toggle(
-"hidden",
-!(matchesCategory&&matchesSearch)
-);
-
+const gc=document.getElementById("gameCenter");
+if(gc){
+const okCat=currentCategory==="all"||currentCategory==="custom";
+const okSearch=gc.innerText.toLowerCase().includes(search);
+gc.classList.toggle("hidden",!(okCat&&okSearch));
 }
 
 document.querySelectorAll(".section-title").forEach(title=>{
@@ -1119,33 +1059,18 @@ function showGame(html){
 area.innerHTML=html;
 
 area.classList.add("show","fullscreen-game");
-
 document.body.style.overflow="hidden";
 
 }
 
 function closeGame(){
-
 clearTimeout(reactionTimer);
 clearInterval(dodgeInterval);
 document.onkeydown=null;
-
 area.classList.remove("show","fullscreen-game");
-
 area.innerHTML="";
-
 document.body.style.overflow="";
-
 }
-
-document.addEventListener("keydown",(e)=>{
-
-if(e.key==="Escape" && area.classList.contains("show")){
-closeGame();
-}
-
-});
-
 
 
 /* ================= REACTION RUSH ================= */
@@ -1539,140 +1464,117 @@ closeGame();
 }
 
 
-/* ================= QUIZ ================= */
+/* ================= RANDOMIZED QUIZ ================= */
 
 const questions=[
-
-{
-q:"Which Minecraft version is Eaglercraft commonly based on?",
-a:["1.12.2","1.20.1","1.7.10","1.5"],
-c:0
-},
-
-{
-q:"Which block is normally used to make a Nether portal frame?",
-a:["Diamond","Obsidian","Bedrock","Quartz"],
-c:1
-},
-
-{
-q:"Which mob explodes?",
-a:["Zombie","Skeleton","Creeper","Spider"],
-c:2
-},
-
-{
-q:"What do you use to enchant items?",
-a:["Anvil","Furnace","Enchanting Table","Crafting Table"],
-c:2
-},
-
-{
-q:"Which dimension contains the Ender Dragon?",
-a:["Nether","Overworld","End","Deep Dark"],
-c:2
-}
-
+{q:"Which Minecraft version is Eaglercraft commonly based on?",a:["1.12.2","1.20.1","1.7.10","1.5"],c:0},
+{q:"Which block is normally used to make a Nether portal frame?",a:["Diamond","Obsidian","Bedrock","Quartz"],c:1},
+{q:"Which mob explodes?",a:["Zombie","Skeleton","Creeper","Spider"],c:2},
+{q:"What do you use to enchant items?",a:["Anvil","Furnace","Enchanting Table","Crafting Table"],c:2},
+{q:"Which dimension contains the Ender Dragon?",a:["Nether","Overworld","End","Deep Dark"],c:2},
+{q:"Which mob shoots arrows?",a:["Skeleton","Cow","Pig","Sheep"],c:0},
+{q:"What item is used to make a torch?",a:["Stick + Coal","Iron + Stone","Wood + Diamond","Sand + Flint"],c:0},
+{q:"Which tool is best for mining stone?",a:["Pickaxe","Hoe","Shovel","Shears"],c:0},
+{q:"What food can be made from wheat?",a:["Bread","Cake only","Soup","Pie"],c:0},
+{q:"Which material is used to make an anvil?",a:["Iron","Gold","Diamond","Wood"],c:0},
+{q:"What creature can teleport?",a:["Enderman","Chicken","Cow","Squid"],c:0},
+{q:"What block lets you smelt items?",a:["Furnace","Chest","Bed","Door"],c:0},
+{q:"What do you need to make a crafting table?",a:["4 Wooden Planks","4 Iron","2 Sticks","8 Stone"],c:0},
+{q:"Which ore gives redstone dust?",a:["Redstone Ore","Coal Ore","Copper Ore","Quartz Ore"],c:0},
+{q:"What is a bucket commonly made from?",a:["Iron Ingots","Gold Nuggets","Stone","Wood"],c:0},
+{q:"Which mob is hostile and jumps at players?",a:["Spider","Cow","Pig","Horse"],c:0},
+{q:"What protects a player from fall damage if placed at the right moment?",a:["Water","Torch","Ladder only","Sand"],c:0},
+{q:"Which item can be used to tame a wolf?",a:["Bones","Seeds","Sugar","Wheat"],c:0},
+{q:"What do you use to make a bow?",a:["Sticks and String","Iron and Wood","Stone and String","Gold and Sticks"],c:0},
+{q:"Which dimension has Nether fortresses?",a:["Nether","Overworld","End","Sky"],c:0}
 ];
 
+let quizQuestions=[];
 let quizIndex=0;
 let quizScore=0;
 
-function startQuiz(){
+function shuffleArray(arr){
+return arr.slice().sort(()=>Math.random()-0.5);
+}
 
+function startQuiz(){
 quizIndex=0;
 quizScore=0;
-
+/* Every round gets a fresh random set and random answer order. */
+quizQuestions=shuffleArray(questions).slice(0,10).map(item=>{
+const correct=item.a[item.c];
+const answers=shuffleArray(item.a);
+return {q:item.q,a:answers,c:answers.indexOf(correct)};
+});
 showQuestion();
-
 }
 
 function showQuestion(){
-
-const q=questions[quizIndex];
-
+const q=quizQuestions[quizIndex];
 let html=`
-
 <h2>🧠 Minecraft Quiz</h2>
-
-<p>
-Question ${quizIndex+1}/${questions.length}
-</p>
-
+<p>Question ${quizIndex+1}/${quizQuestions.length}</p>
 <h3>${q.q}</h3>
-
 `;
-
 q.a.forEach((answer,i)=>{
-
-html+=`
-
-<button
-class="quiz-option"
-onclick="answerQuiz(${i})">
-${answer}
-</button>
-
-`;
-
+html+=`<button class="quiz-option" onclick="answerQuiz(${i})">${answer}</button>`;
 });
-
 html+=`
-
-<div class="score">
-Score: ${quizScore}
-</div>
-
-<button class="back-button" onclick="closeGame()">
-Quit
-</button>
-
+<div class="score">Score: ${quizScore}</div>
+<button class="back-button" onclick="closeGame()">Quit</button>
 `;
-
 showGame(html);
-
 }
 
 function answerQuiz(answer){
-
-if(answer===questions[quizIndex].c)
-quizScore++;
-
+if(answer===quizQuestions[quizIndex].c)quizScore++;
 quizIndex++;
-
-if(quizIndex>=questions.length){
-
+if(quizIndex>=quizQuestions.length){
 saveScore("quiz",quizScore);
-
 showGame(`
-
 <h2>🏆 Quiz Complete!</h2>
-
-<div class="score">
-You scored ${quizScore}/${questions.length}
-</div>
-
-<button
-class="big-game-button"
-onclick="startQuiz()">
-Play Again
-</button>
-
-<button class="back-button" onclick="closeGame()">
-Close
-</button>
-
+<div class="score">You scored ${quizScore}/${quizQuestions.length}</div>
+<button class="big-game-button" onclick="startQuiz()">🔀 New Random Quiz</button>
+<button class="back-button" onclick="closeGame()">Close</button>
 `);
-
 return;
-
 }
-
 showQuestion();
-
 }
 
 
+/* ================= VOXEL QUEST ================= */
+let voxelState=null;
+function startVoxelQuest(){
+showGame(`
+<h2>🌍 Voxel Quest</h2>
+<div class="voxel-game" id="voxelGame">
+<div class="voxel-sky"></div><div class="voxel-cloud" style="left:12%;top:13%"></div><div class="voxel-cloud" style="left:63%;top:20%;transform:scale(.7)"></div>
+<div class="voxel-ground"></div><div class="voxel-dirt"></div><div class="voxel-world" id="voxelWorld"></div>
+<div class="voxel-player"><div class="voxel-player-head"></div><div class="voxel-player-body"></div><div class="voxel-tool"></div></div>
+<div class="voxel-ui"><div class="voxel-top"><div class="voxel-title">🌍 Voxel Quest</div><div class="voxel-stats" id="voxelStats"></div></div>
+<div class="voxel-help">🖱️ Click blocks to mine them. Collect crystals and clear the world!</div><div class="voxel-inventory" id="voxelInventory"></div><div class="voxel-message" id="voxelMessage"></div></div>
+<div class="voxel-start" id="voxelStart"><h2>🌍 Voxel Quest</h2><p>An original mini voxel adventure.</p><button onclick="beginVoxelQuest()">Start Game</button></div>
+</div><button class="back-button" onclick="closeGame()">← Back to Hub</button>`);
+}
+function beginVoxelQuest(){
+const world=document.getElementById("voxelWorld"),start=document.getElementById("voxelStart");if(!world)return;
+start.style.display="none";voxelState={mined:0,crystals:0,score:0,inventory:{Grass:0,Stone:0,Ore:0,Crystal:0}};world.innerHTML="";
+const blocks=[[8,52,"grass"],[14,45,"stone"],[20,55,"ore"],[26,42,"grass"],[33,51,"stone"],[40,44,"ore"],[48,55,"grass"],[56,46,"crystal"],[65,53,"stone"],[73,43,"ore"],[81,52,"grass"],[88,46,"stone"],[18,64,"stone"],[35,67,"ore"],[53,63,"stone"],[71,66,"crystal"]];
+blocks.forEach(b=>{const el=document.createElement("div");el.className="voxel-block "+b[2];el.style.left=b[0]+"%";el.style.bottom=b[1]+"%";el.dataset.type=b[2];el.onclick=()=>mineVoxel(el);world.appendChild(el)});updateVoxelUI();
+}
+function mineVoxel(el){
+if(!voxelState||!el||!el.parentNode)return;const type=el.dataset.type;voxelState.mined++;const pts=type==="crystal"?25:type==="ore"?10:5;voxelState.score+=pts;if(type==="crystal")voxelState.crystals++;
+const name=type==="grass"?"Grass":type==="stone"?"Stone":type==="ore"?"Ore":"Crystal";voxelState.inventory[name]++;el.remove();showVoxelMessage("⛏️ Mined "+name+"! +"+pts);updateVoxelUI();
+if(voxelState.mined>=16)showVoxelMessage("🏆 WORLD CLEARED! Score: "+voxelState.score);
+}
+function updateVoxelUI(){
+const s=document.getElementById("voxelStats"),inv=document.getElementById("voxelInventory");if(!s||!inv||!voxelState)return;
+s.textContent="💚 100 | ⛏️ "+voxelState.mined+" | 💎 "+voxelState.crystals+" | ⭐ "+voxelState.score;inv.innerHTML="";
+Object.entries(voxelState.inventory).forEach(([name,count])=>{const slot=document.createElement("div");slot.className="voxel-slot";slot.textContent=name==="Crystal"?"💎":name==="Ore"?"🔷":name==="Stone"?"🪨":"🌱";const n=document.createElement("b");n.textContent=count;slot.appendChild(n);inv.appendChild(slot)});
+}
+let voxelMessageTimer;
+function showVoxelMessage(text){const box=document.getElementById("voxelMessage");if(!box)return;box.textContent=text;box.style.display="block";clearTimeout(voxelMessageTimer);voxelMessageTimer=setTimeout(()=>box.style.display="none",900)}
 /* ================= HIGH SCORES ================= */
 
 function saveScore(game,score){
