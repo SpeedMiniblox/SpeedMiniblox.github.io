@@ -373,23 +373,26 @@ background:#f8fafc;
 display:block;
 }
 
-/* FULLSCREEN CUSTOM GAMES */
+/* FULLSCREEN GAME OVERLAY */
 .game-area.fullscreen-game{
-position:fixed;
-inset:0;
-z-index:9999;
-width:100vw;
-height:100vh;
-min-height:100vh;
-margin:0;
-padding:35px;
-border-radius:0;
-border:0;
-display:flex;
+position:fixed !important;
+top:0 !important;
+left:0 !important;
+right:0 !important;
+bottom:0 !important;
+width:100vw !important;
+height:100vh !important;
+min-height:100vh !important;
+margin:0 !important;
+padding:35px !important;
+z-index:999999 !important;
+display:flex !important;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-overflow:auto;
+border:0 !important;
+border-radius:0 !important;
+overflow:auto !important;
 background:
 radial-gradient(circle at 15% 10%,#172554 0%,transparent 35%),
 radial-gradient(circle at 85% 90%,#3b0764 0%,transparent 35%),
@@ -403,22 +406,36 @@ radial-gradient(circle at 85% 90%,#ddd6fe 0%,transparent 35%),
 #f1f5f9;
 }
 
+@media(max-width:600px){
+.game-area.fullscreen-game{
+padding:20px 10px !important;
+}
+.game-area.fullscreen-game .aim-board{
+width:96vw;
+height:calc(100vh - 155px);
+min-height:350px;
+}
+}
+
 .game-area.fullscreen-game h2{
-font-size:clamp(28px,5vw,48px);
+font-size:clamp(30px,5vw,52px);
 }
 
 .game-area.fullscreen-game .aim-board{
-width:min(1000px,90vw);
-height:min(65vh,650px);
+width:min(1100px,94vw);
+height:calc(100vh - 190px);
+min-height:420px;
+margin-top:15px;
 }
 
-.game-area.fullscreen-game .target{
-width:65px;
-height:65px;
+.game-area.fullscreen-game .big-game-button{
+font-size:clamp(22px,3vw,32px);
+padding:25px 45px;
 }
 
-.game-area.fullscreen-game .game-message{
-font-size:22px;
+.game-area.fullscreen-game .quiz-option{
+font-size:18px;
+padding:16px;
 }
 
 .game-area h2{
@@ -473,7 +490,8 @@ box-shadow:0 0 25px rgba(239,68,68,.6);
 
 .aim-board{
 position:relative;
-height:330px;
+height:calc(100vh - 190px);
+min-height:330px;
 margin-top:20px;
 border:1px solid #334155;
 border-radius:15px;
@@ -623,7 +641,7 @@ onkeyup="applyFilters()">
 
 <!-- ================= CUSTOM GAME CENTER ================= -->
 
-<section class="game-center" id="gameCenter">
+<section class="game-center" id="gameCenter" data-category="custom">
 
 <h2 class="game-title">🎮 MY GAME CENTER</h2>
 
@@ -1048,6 +1066,24 @@ card.classList.toggle(
 
 });
 
+const gameCenter=document.getElementById("gameCenter");
+
+if(gameCenter){
+
+const matchesCategory=
+currentCategory==="all"||
+currentCategory==="custom";
+
+const matchesSearch=
+gameCenter.innerText.toLowerCase().includes(search);
+
+gameCenter.classList.toggle(
+"hidden",
+!(matchesCategory&&matchesSearch)
+);
+
+}
+
 document.querySelectorAll(".section-title").forEach(title=>{
 
 const cat=title.className
@@ -1086,11 +1122,6 @@ area.classList.add("show","fullscreen-game");
 
 document.body.style.overflow="hidden";
 
-/* Use the browser's real fullscreen mode when available. */
-if(document.documentElement.requestFullscreen){
-document.documentElement.requestFullscreen().catch(()=>{});
-}
-
 }
 
 function closeGame(){
@@ -1105,25 +1136,16 @@ area.innerHTML="";
 
 document.body.style.overflow="";
 
-if(document.fullscreenElement && document.exitFullscreen){
-document.exitFullscreen().catch(()=>{});
 }
-
-}
-
-/* ESC exits the game and returns to the hub. */
-document.addEventListener("fullscreenchange",()=>{
-if(!document.fullscreenElement && area.classList.contains("show")){
-area.classList.remove("fullscreen-game");
-document.body.style.overflow="";
-}
-});
 
 document.addEventListener("keydown",(e)=>{
+
 if(e.key==="Escape" && area.classList.contains("show")){
 closeGame();
 }
+
 });
+
 
 
 /* ================= REACTION RUSH ================= */
@@ -1368,7 +1390,7 @@ startDodge();
 
 }
 
-if(y>330){
+if(y>board.clientHeight){
 
 clearInterval(fall);
 meteor.remove();
@@ -1400,7 +1422,7 @@ if(e.key==="ArrowDown"||e.key.toLowerCase()==="s")
 playerY+=step;
 
 playerX=Math.max(2,Math.min(95,playerX));
-playerY=Math.max(2,Math.min(90,playerY));
+playerY=Math.max(2,Math.min(94,playerY));
 
 p.style.left=playerX+"%";
 p.style.top=playerY+"%";
