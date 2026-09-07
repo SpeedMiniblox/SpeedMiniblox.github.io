@@ -373,6 +373,54 @@ background:#f8fafc;
 display:block;
 }
 
+/* FULLSCREEN CUSTOM GAMES */
+.game-area.fullscreen-game{
+position:fixed;
+inset:0;
+z-index:9999;
+width:100vw;
+height:100vh;
+min-height:100vh;
+margin:0;
+padding:35px;
+border-radius:0;
+border:0;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+overflow:auto;
+background:
+radial-gradient(circle at 15% 10%,#172554 0%,transparent 35%),
+radial-gradient(circle at 85% 90%,#3b0764 0%,transparent 35%),
+#070b14;
+}
+
+body.light .game-area.fullscreen-game{
+background:
+radial-gradient(circle at 15% 10%,#bfdbfe 0%,transparent 35%),
+radial-gradient(circle at 85% 90%,#ddd6fe 0%,transparent 35%),
+#f1f5f9;
+}
+
+.game-area.fullscreen-game h2{
+font-size:clamp(28px,5vw,48px);
+}
+
+.game-area.fullscreen-game .aim-board{
+width:min(1000px,90vw);
+height:min(65vh,650px);
+}
+
+.game-area.fullscreen-game .target{
+width:65px;
+height:65px;
+}
+
+.game-area.fullscreen-game .game-message{
+font-size:22px;
+}
+
 .game-area h2{
 margin-top:0;
 }
@@ -1034,22 +1082,48 @@ function showGame(html){
 
 area.innerHTML=html;
 
-area.classList.add("show");
+area.classList.add("show","fullscreen-game");
 
-area.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+document.body.style.overflow="hidden";
+
+/* Use the browser's real fullscreen mode when available. */
+if(document.documentElement.requestFullscreen){
+document.documentElement.requestFullscreen().catch(()=>{});
+}
 
 }
 
 function closeGame(){
 
-area.classList.remove("show");
+clearTimeout(reactionTimer);
+clearInterval(dodgeInterval);
+document.onkeydown=null;
+
+area.classList.remove("show","fullscreen-game");
 
 area.innerHTML="";
 
+document.body.style.overflow="";
+
+if(document.fullscreenElement && document.exitFullscreen){
+document.exitFullscreen().catch(()=>{});
 }
+
+}
+
+/* ESC exits the game and returns to the hub. */
+document.addEventListener("fullscreenchange",()=>{
+if(!document.fullscreenElement && area.classList.contains("show")){
+area.classList.remove("fullscreen-game");
+document.body.style.overflow="";
+}
+});
+
+document.addEventListener("keydown",(e)=>{
+if(e.key==="Escape" && area.classList.contains("show")){
+closeGame();
+}
+});
 
 
 /* ================= REACTION RUSH ================= */
