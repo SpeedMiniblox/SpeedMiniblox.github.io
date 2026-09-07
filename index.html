@@ -2,399 +2,516 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>⚡ My Gaming Hub</title>
 
 <style>
 
-* {
-    box-sizing: border-box;
-    transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s;
+*{
+box-sizing:border-box;
+transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+html{
+scroll-behavior:smooth;
+}
 
-    background:
-        radial-gradient(circle at top left, #172554 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #3b0764 0%, transparent 35%),
-        #070b14;
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+color:white;
+min-height:100vh;
+background:
+radial-gradient(circle at 10% 0%,#172554 0%,transparent 35%),
+radial-gradient(circle at 90% 100%,#3b0764 0%,transparent 35%),
+#070b14;
+overflow-x:hidden;
+}
 
-    min-height: 100vh;
+/* animated background */
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.12;
+background-image:
+radial-gradient(circle,#60a5fa 1px,transparent 1px);
+background-size:35px 35px;
+animation:bgmove 15s linear infinite;
+}
+
+@keyframes bgmove{
+from{transform:translateY(0)}
+to{transform:translateY(35px)}
 }
 
 /* LIGHT MODE */
 
-body.light {
-    color: #111827;
-
-    background:
-        radial-gradient(circle at top left, #bfdbfe 0%, transparent 35%),
-        radial-gradient(circle at bottom right, #ddd6fe 0%, transparent 35%),
-        #f1f5f9;
+body.light{
+color:#111827;
+background:
+radial-gradient(circle at 10% 0%,#bfdbfe 0%,transparent 35%),
+radial-gradient(circle at 90% 100%,#ddd6fe 0%,transparent 35%),
+#f1f5f9;
 }
 
-body.light header {
-    background: rgba(255,255,255,.75);
-    border-bottom-color: rgba(0,0,0,.1);
+body.light header{
+background:rgba(255,255,255,.78);
+border-color:rgba(0,0,0,.1);
 }
 
-body.light header p,
-body.light .clock {
-    color: #64748b;
+body.light .card{
+background:rgba(255,255,255,.82);
+border-color:rgba(0,0,0,.1);
+color:#111827;
 }
 
-body.light .card {
-    background: rgba(255,255,255,.8);
-    border-color: rgba(0,0,0,.1);
+body.light .card p{
+color:#64748b;
 }
 
-body.light .card p {
-    color: #64748b;
+body.light .search input{
+background:white;
+color:#111827;
+border-color:#cbd5e1;
 }
 
-body.light .search input {
-    background: white;
-    color: #111827;
-    border-color: #cbd5e1;
+body.light .filter-btn{
+background:white;
+color:#334155;
+border-color:#cbd5e1;
 }
 
-body.light footer {
-    color: #64748b;
-    border-top-color: rgba(0,0,0,.1);
+body.light footer{
+border-color:rgba(0,0,0,.1);
 }
 
-body.light .filter-btn {
-    background: rgba(255,255,255,.8);
-    color: #334155;
-    border-color: #cbd5e1;
+body.light .game-box{
+background:white;
+color:#111827;
+border-color:#cbd5e1;
 }
 
 /* HEADER */
 
-header {
-    padding: 30px 20px 25px;
-    text-align: center;
-
-    background: rgba(10,15,30,.75);
-    border-bottom: 1px solid rgba(255,255,255,.1);
-
-    backdrop-filter: blur(12px);
+header{
+position:relative;
+z-index:5;
+padding:30px 20px 25px;
+text-align:center;
+background:rgba(10,15,30,.76);
+border-bottom:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(14px);
 }
 
-header h1 {
-    margin: 0;
-
-    font-size: 42px;
-
-    background: linear-gradient(
-        90deg,
-        #60a5fa,
-        #a78bfa,
-        #f472b6
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
+header h1{
+margin:0;
+font-size:44px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
 }
 
-header p {
-    color: #9ca3af;
-    margin-top: 10px;
+header p{
+color:#9ca3af;
+margin-top:10px;
 }
 
-/* THEME BUTTON */
-
-.theme-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-
-    padding: 10px 15px;
-
-    border-radius: 12px;
-
-    border: 1px solid #334155;
-
-    background: #0f172a;
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 15px;
+.theme-button{
+position:absolute;
+top:20px;
+right:20px;
+padding:10px 15px;
+border-radius:12px;
+border:1px solid #334155;
+background:#0f172a;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
 
-.theme-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(96,165,250,.3);
+.theme-button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px rgba(96,165,250,.3);
 }
 
-body.light .theme-button {
-    background: white;
-    color: #111827;
-    border-color: #cbd5e1;
+/* FILTERS */
+
+.filters{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:8px;
+margin:20px auto 5px;
+max-width:1000px;
 }
 
-/* CATEGORY FILTERS */
-
-.filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin: 20px auto 5px;
-
-    max-width: 900px;
+.filter-btn{
+padding:10px 16px;
+border-radius:12px;
+border:1px solid #334155;
+background:#0f172a;
+color:#cbd5e1;
+cursor:pointer;
+font-size:14px;
+font-weight:bold;
 }
 
-.filter-btn {
-    padding: 10px 16px;
-
-    border-radius: 12px;
-
-    border: 1px solid #334155;
-
-    background: #0f172a;
-
-    color: #cbd5e1;
-
-    cursor: pointer;
-
-    font-size: 14px;
-
-    font-weight: bold;
+.filter-btn:hover{
+transform:translateY(-2px);
+border-color:#60a5fa;
 }
 
-.filter-btn:hover {
-    transform: translateY(-2px);
-    border-color: #60a5fa;
-}
-
-.filter-btn.active {
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    color: white;
-
-    border-color: transparent;
-
-    box-shadow: 0 5px 20px rgba(59,130,246,.25);
+.filter-btn.active{
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+border-color:transparent;
+box-shadow:0 5px 20px rgba(59,130,246,.25);
 }
 
 /* SEARCH */
 
-.search {
-    display: flex;
-    justify-content: center;
-
-    margin: 25px auto;
+.search{
+display:flex;
+justify-content:center;
+margin:25px auto;
 }
 
-.search input {
-    width: min(600px,90%);
-
-    padding: 15px 20px;
-
-    border-radius: 14px;
-
-    border: 1px solid #334155;
-
-    background: #0f172a;
-
-    color: white;
-
-    outline: none;
-
-    font-size: 16px;
+.search input{
+width:min(650px,90%);
+padding:15px 20px;
+border-radius:14px;
+border:1px solid #334155;
+background:#0f172a;
+color:white;
+outline:none;
+font-size:16px;
 }
 
-.search input:focus {
-    border-color: #60a5fa;
-
-    box-shadow:
-        0 0 20px rgba(96,165,250,.25);
+.search input:focus{
+border-color:#60a5fa;
+box-shadow:0 0 20px rgba(96,165,250,.25);
 }
 
-/* CLOCK */
-
-.clock {
-    text-align: center;
-
-    margin: 15px;
-
-    color: #94a3b8;
-
-    font-size: 15px;
+.clock{
+text-align:center;
+margin:15px;
+color:#94a3b8;
+font-size:15px;
 }
 
 /* MAIN */
 
-.container {
-    width: min(1200px,92%);
-
-    margin: auto;
-
-    padding-bottom: 50px;
+.container{
+position:relative;
+z-index:2;
+width:min(1200px,92%);
+margin:auto;
+padding-bottom:50px;
 }
 
-.section-title {
-    margin-top: 35px;
-    margin-bottom: 15px;
-
-    font-size: 24px;
+.section-title{
+margin-top:38px;
+margin-bottom:15px;
+font-size:25px;
 }
 
-/* GRID */
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(210px,1fr));
-
-    gap: 16px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:16px;
 }
 
 /* CARDS */
 
-.card {
-    text-decoration: none;
-
-    color: white;
-
-    background: rgba(15,23,42,.85);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 18px;
-
-    padding: 22px;
-
-    transition: .2s;
-
-    position: relative;
-
-    overflow: hidden;
-
-    display: block;
+.card{
+text-decoration:none;
+color:white;
+background:rgba(15,23,42,.87);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:22px;
+transition:.2s;
+position:relative;
+overflow:hidden;
+display:block;
 }
 
-body.light .card {
-    color: #111827;
+.card:after{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+right:-50px;
+top:-50px;
+border-radius:50%;
+background:rgba(96,165,250,.08);
 }
 
-.card:hover {
-    transform: translateY(-6px) scale(1.02);
-
-    border-color: #60a5fa;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.35);
+.card:hover{
+transform:translateY(-6px) scale(1.02);
+border-color:#60a5fa;
+box-shadow:0 10px 35px rgba(0,0,0,.35);
 }
 
-.icon {
-    font-size: 38px;
-
-    margin-bottom: 12px;
+.icon{
+font-size:38px;
+margin-bottom:12px;
 }
 
-.card h3 {
-    margin: 5px 0;
-
-    font-size: 19px;
+.card h3{
+margin:5px 0;
+font-size:19px;
 }
 
-.card p {
-    color: #94a3b8;
-
-    font-size: 14px;
-
-    margin: 6px 0 0;
+.card p{
+color:#94a3b8;
+font-size:14px;
+margin:6px 0 0;
+line-height:1.4;
 }
 
-/* SPECIAL CARDS */
-
-.featured {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37,99,235,.25),
-            rgba(124,58,237,.2)
-        ),
-        #0f172a;
+.featured{
+background:
+linear-gradient(135deg,rgba(37,99,235,.25),rgba(124,58,237,.2)),
+#0f172a;
 }
 
-body.light .featured {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(96,165,250,.2),
-            rgba(167,139,250,.2)
-        ),
-        white;
+body.light .featured{
+background:
+linear-gradient(135deg,rgba(96,165,250,.2),rgba(167,139,250,.2)),
+white;
 }
 
-.green:hover {
-    border-color: #22c55e;
+.green:hover{border-color:#22c55e}
+.purple:hover{border-color:#a855f7}
+.orange:hover{border-color:#f97316}
+.pink:hover{border-color:#ec4899}
+
+.hidden{
+display:none!important;
 }
 
-.purple:hover {
-    border-color: #a855f7;
+/* GAME CENTER */
+
+.game-center{
+margin-top:45px;
+padding:25px;
+border-radius:24px;
+background:rgba(15,23,42,.75);
+border:1px solid rgba(96,165,250,.18);
+box-shadow:0 15px 50px rgba(0,0,0,.2);
 }
 
-.orange:hover {
-    border-color: #f97316;
+body.light .game-center{
+background:rgba(255,255,255,.7);
 }
 
-/* HIDDEN */
+.game-title{
+text-align:center;
+font-size:32px;
+margin:0 0 5px;
+}
 
-.hidden {
-    display: none !important;
+.game-subtitle{
+text-align:center;
+color:#94a3b8;
+margin-bottom:25px;
+}
+
+.game-buttons{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
+}
+
+.game-button{
+border:1px solid #334155;
+border-radius:16px;
+padding:17px;
+background:#0f172a;
+color:white;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+}
+
+body.light .game-button{
+background:white;
+color:#111827;
+border-color:#cbd5e1;
+}
+
+.game-button:hover{
+transform:translateY(-4px);
+border-color:#60a5fa;
+box-shadow:0 8px 25px rgba(96,165,250,.2);
+}
+
+/* GAME AREA */
+
+.game-area{
+display:none;
+margin-top:25px;
+padding:25px;
+border-radius:20px;
+background:#080d19;
+border:1px solid #334155;
+text-align:center;
+min-height:300px;
+}
+
+body.light .game-area{
+background:#f8fafc;
+}
+
+.game-area.show{
+display:block;
+}
+
+.game-area h2{
+margin-top:0;
+}
+
+.score{
+font-size:22px;
+font-weight:bold;
+margin:15px;
+}
+
+.big-game-button{
+padding:20px 35px;
+font-size:20px;
+font-weight:bold;
+border:0;
+border-radius:16px;
+cursor:pointer;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+box-shadow:0 8px 25px rgba(37,99,235,.25);
+}
+
+.big-game-button:hover{
+transform:scale(1.05);
+}
+
+.danger-button{
+background:linear-gradient(90deg,#dc2626,#f97316);
+}
+
+.success-button{
+background:linear-gradient(90deg,#16a34a,#22c55e);
+}
+
+.game-message{
+font-size:18px;
+margin:15px;
+min-height:25px;
+}
+
+.target{
+position:absolute;
+width:55px;
+height:55px;
+border-radius:50%;
+background:#ef4444;
+cursor:pointer;
+box-shadow:0 0 25px rgba(239,68,68,.6);
+}
+
+.aim-board{
+position:relative;
+height:330px;
+margin-top:20px;
+border:1px solid #334155;
+border-radius:15px;
+overflow:hidden;
+background:
+radial-gradient(circle,#172554,#080d19);
+}
+
+.meteor{
+position:absolute;
+width:28px;
+height:28px;
+border-radius:50%;
+background:#f97316;
+box-shadow:0 0 20px #f97316;
+}
+
+.player{
+position:absolute;
+width:35px;
+height:35px;
+border-radius:8px;
+background:#60a5fa;
+box-shadow:0 0 20px #60a5fa;
+}
+
+.quiz-option{
+display:block;
+width:min(500px,90%);
+margin:8px auto;
+padding:13px;
+border-radius:12px;
+border:1px solid #334155;
+background:#0f172a;
+color:white;
+cursor:pointer;
+}
+
+body.light .quiz-option{
+background:white;
+color:#111827;
+border-color:#cbd5e1;
+}
+
+.quiz-option:hover{
+border-color:#60a5fa;
+}
+
+.back-button{
+margin-top:20px;
+padding:10px 18px;
+border-radius:10px;
+border:1px solid #475569;
+background:transparent;
+color:inherit;
+cursor:pointer;
 }
 
 /* FOOTER */
 
-footer {
-    text-align: center;
-
-    padding: 30px;
-
-    color: #64748b;
-
-    border-top:
-        1px solid rgba(255,255,255,.08);
+footer{
+text-align:center;
+padding:35px;
+color:#64748b;
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:20px;
 }
 
 /* MOBILE */
 
-@media(max-width:600px) {
+@media(max-width:600px){
 
-    header h1 {
-        font-size: 32px;
-    }
+header h1{
+font-size:32px;
+}
 
-    .theme-button {
-        position: relative;
+.theme-button{
+position:relative;
+top:auto;
+right:auto;
+margin-bottom:15px;
+}
 
-        top: auto;
-        right: auto;
-
-        margin-bottom: 15px;
-    }
-
-    .filters {
-        padding: 0 10px;
-    }
+.game-center{
+padding:17px;
+}
 
 }
 
@@ -413,51 +530,40 @@ footer {
 
 <p>Games • Minecraft • Clients • Tools • Everything I use</p>
 
-
-<!-- CATEGORY FILTERS -->
-
 <div class="filters">
 
-<button class="filter-btn active"
-onclick="filterCategory('all', this)">
+<button class="filter-btn active" onclick="filterCategory('all',this)">
 🏠 All
 </button>
 
-<button class="filter-btn"
-onclick="filterCategory('games', this)">
+<button class="filter-btn" onclick="filterCategory('games',this)">
 🎮 Games
 </button>
 
-<button class="filter-btn"
-onclick="filterCategory('minecraft', this)">
+<button class="filter-btn" onclick="filterCategory('minecraft',this)">
 ⛏️ Minecraft
 </button>
 
-<button class="filter-btn"
-onclick="filterCategory('tools', this)">
+<button class="filter-btn" onclick="filterCategory('tools',this)">
 🛠️ Tools
 </button>
 
-<button class="filter-btn"
-onclick="filterCategory('websites', this)">
+<button class="filter-btn" onclick="filterCategory('websites',this)">
 🌐 Websites
+</button>
+
+<button class="filter-btn" onclick="filterCategory('custom',this)">
+🔥 My Games
 </button>
 
 </div>
 
-
-<!-- SEARCH -->
-
 <div class="search">
-
-<input
-id="search"
+<input id="search"
 type="text"
 placeholder="🔍 Search my links..."
-onkeyup="searchLinks()">
-
+onkeyup="applyFilters()">
 </div>
-
 
 <div class="clock" id="clock"></div>
 
@@ -465,6 +571,45 @@ onkeyup="searchLinks()">
 
 
 <div class="container">
+
+
+<!-- ================= CUSTOM GAME CENTER ================= -->
+
+<section class="game-center" id="gameCenter">
+
+<h2 class="game-title">🎮 MY GAME CENTER</h2>
+
+<p class="game-subtitle">
+Play my custom games — no downloads required!
+</p>
+
+<div class="game-buttons">
+
+<button class="game-button" onclick="startReaction()">
+⚡ Reaction Rush
+</button>
+
+<button class="game-button" onclick="startZombie()">
+🧟 Zombie Clicker
+</button>
+
+<button class="game-button" onclick="startDodge()">
+☄️ Meteor Dodge
+</button>
+
+<button class="game-button" onclick="startAim()">
+🎯 Aim Trainer
+</button>
+
+<button class="game-button" onclick="startQuiz()">
+🧠 Minecraft Quiz
+</button>
+
+</div>
+
+<div class="game-area" id="gameArea"></div>
+
+</section>
 
 
 <!-- ================= GAMES ================= -->
@@ -475,71 +620,47 @@ onkeyup="searchLinks()">
 
 <div class="grid">
 
-
-<a
-class="card featured category-games"
+<a class="card featured category-games"
 data-category="games"
 href="https://miniblox.io/"
 target="_blank">
 
 <div class="icon">🟦</div>
-
 <h3>Miniblox</h3>
-
-<p>
-Play Minecraft-style multiplayer in your browser.
-</p>
+<p>Play Minecraft-style multiplayer in your browser.</p>
 
 </a>
 
-
-<a
-class="card featured category-games"
+<a class="card featured category-games"
 data-category="games"
 href="https://bloxd.io/"
 target="_blank">
 
 <div class="icon">🟩</div>
-
 <h3>Bloxd.io</h3>
-
-<p>
-Build, survive and play tons of game modes.
-</p>
+<p>Build, survive and play tons of game modes.</p>
 
 </a>
 
-
-<a
-class="card featured category-games"
+<a class="card featured category-games"
 data-category="games"
 href="https://eaglercraft.com/"
 target="_blank">
 
 <div class="icon">🦅</div>
-
 <h3>Eaglercraft</h3>
-
-<p>
-Play Minecraft directly in your browser.
-</p>
+<p>Play Minecraft directly in your browser.</p>
 
 </a>
 
-
-<a
-class="card featured category-games"
+<a class="card featured category-games"
 data-category="games"
 href="https://bobthebuilderb.github.io/eaglercraft-1.12.2/"
 target="_blank">
 
 <div class="icon">⛏️</div>
-
 <h3>Eaglercraft 1.12.2</h3>
-
-<p>
-Browser Minecraft 1.12.2.
-</p>
+<p>Browser Minecraft 1.12.2.</p>
 
 </a>
 
@@ -554,78 +675,54 @@ Browser Minecraft 1.12.2.
 
 <div class="grid">
 
-
-<a
-class="card purple category-minecraft"
+<a class="card purple category-minecraft"
 data-category="minecraft"
 href="https://github.com/TuffNetwork/Tuff-Client-Builds/releases"
 target="_blank">
 
 <div class="icon">🔥</div>
-
 <h3>Tuff Client</h3>
-
-<p>
-1.12 Eaglercraft client with extra features.
-</p>
+<p>1.12 Eaglercraft client with extra features.</p>
 
 </a>
 
-
-<a
-class="card purple category-minecraft"
+<a class="card purple category-minecraft"
 data-category="minecraft"
 href="https://itzpulsev2.github.io/"
 target="_blank">
 
 <div class="icon">🚀</div>
-
 <h3>Eaglercraft Launcher</h3>
-
-<p>
-Launcher with multiple browser clients.
-</p>
+<p>Launcher with multiple browser clients.</p>
 
 </a>
 
-
-<a
-class="card purple category-minecraft"
+<a class="card purple category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/"
 target="_blank">
 
 <div class="icon">🧩</div>
-
 <h3>Modrinth</h3>
-
-<p>
-Mods, plugins, shaders and resource packs.
-</p>
+<p>Mods, plugins, shaders and resource packs.</p>
 
 </a>
 
-
-<a
-class="card purple category-minecraft"
+<a class="card purple category-minecraft"
 data-category="minecraft"
 href="https://www.minecraft.net/"
 target="_blank">
 
 <div class="icon">🟫</div>
-
 <h3>Minecraft</h3>
-
-<p>
-Official Minecraft website.
-</p>
+<p>Official Minecraft website.</p>
 
 </a>
 
 </div>
 
 
-<!-- ================= MINECRAFT STUFF ================= -->
+<!-- ================= MINECRAFT ================= -->
 
 <h2 class="section-title category-minecraft">
 🛠️ Minecraft Stuff
@@ -633,105 +730,69 @@ Official Minecraft website.
 
 <div class="grid">
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/mods"
 target="_blank">
 
 <div class="icon">🧱</div>
-
 <h3>Minecraft Mods</h3>
-
-<p>
-Browse Minecraft mods.
-</p>
+<p>Browse Minecraft mods.</p>
 
 </a>
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/plugins"
 target="_blank">
 
 <div class="icon">🔌</div>
-
 <h3>Plugins</h3>
-
-<p>
-Find plugins for Minecraft servers.
-</p>
+<p>Find plugins for Minecraft servers.</p>
 
 </a>
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/shaders"
 target="_blank">
 
 <div class="icon">✨</div>
-
 <h3>Shaders</h3>
-
-<p>
-Make Minecraft look better.
-</p>
+<p>Make Minecraft look better.</p>
 
 </a>
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/resourcepacks"
 target="_blank">
 
 <div class="icon">🎨</div>
-
 <h3>Resource Packs</h3>
-
-<p>
-Change Minecraft textures.
-</p>
+<p>Change Minecraft textures.</p>
 
 </a>
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://modrinth.com/datapacks"
 target="_blank">
 
 <div class="icon">📦</div>
-
 <h3>Data Packs</h3>
-
-<p>
-Customize Minecraft worlds.
-</p>
+<p>Customize Minecraft worlds.</p>
 
 </a>
 
-
-<a
-class="card green category-minecraft"
+<a class="card green category-minecraft"
 data-category="minecraft"
 href="https://github.com/"
 target="_blank">
 
 <div class="icon">💻</div>
-
 <h3>GitHub</h3>
-
-<p>
-Code, projects and repositories.
-</p>
+<p>Code, projects and repositories.</p>
 
 </a>
 
@@ -746,71 +807,47 @@ Code, projects and repositories.
 
 <div class="grid">
 
-
-<a
-class="card orange category-websites"
+<a class="card orange category-websites"
 data-category="websites"
 href="https://www.youtube.com/"
 target="_blank">
 
 <div class="icon">▶️</div>
-
 <h3>YouTube</h3>
-
-<p>
-Videos, tutorials and entertainment.
-</p>
+<p>Videos, tutorials and entertainment.</p>
 
 </a>
 
-
-<a
-class="card orange category-websites"
+<a class="card orange category-websites"
 data-category="websites"
 href="https://discord.com/"
 target="_blank">
 
 <div class="icon">💬</div>
-
 <h3>Discord</h3>
-
-<p>
-Chat and gaming communities.
-</p>
+<p>Chat and gaming communities.</p>
 
 </a>
 
-
-<a
-class="card orange category-websites"
+<a class="card orange category-websites"
 data-category="websites"
 href="https://www.google.com/"
 target="_blank">
 
 <div class="icon">🔎</div>
-
 <h3>Google</h3>
-
-<p>
-Search the web.
-</p>
+<p>Search the web.</p>
 
 </a>
 
-
-<a
-class="card orange category-websites"
+<a class="card orange category-websites"
 data-category="websites"
 href="https://chatgpt.com/"
 target="_blank">
 
 <div class="icon">🤖</div>
-
 <h3>ChatGPT</h3>
-
-<p>
-AI assistant.
-</p>
+<p>AI assistant.</p>
 
 </a>
 
@@ -825,71 +862,47 @@ AI assistant.
 
 <div class="grid">
 
-
-<a
-class="card category-tools"
+<a class="card category-tools"
 data-category="tools"
 href="https://www.google.com/search?q=calculator"
 target="_blank">
 
 <div class="icon">🧮</div>
-
 <h3>Calculator</h3>
-
-<p>
-Quick calculations.
-</p>
+<p>Quick calculations.</p>
 
 </a>
 
-
-<a
-class="card category-tools"
+<a class="card category-tools"
 data-category="tools"
 href="https://www.speedtest.net/"
 target="_blank">
 
 <div class="icon">⚡</div>
-
 <h3>Speed Test</h3>
-
-<p>
-Check your internet speed.
-</p>
+<p>Check your internet speed.</p>
 
 </a>
 
-
-<a
-class="card category-tools"
+<a class="card category-tools"
 data-category="tools"
 href="https://www.remove.bg/"
 target="_blank">
 
 <div class="icon">🖼️</div>
-
 <h3>Remove Background</h3>
-
-<p>
-Remove image backgrounds.
-</p>
+<p>Remove image backgrounds.</p>
 
 </a>
 
-
-<a
-class="card category-tools"
+<a class="card category-tools"
 data-category="tools"
 href="https://www.canva.com/"
 target="_blank">
 
 <div class="icon">🎨</div>
-
 <h3>Canva</h3>
-
-<p>
-Design graphics and images.
-</p>
+<p>Design graphics and images.</p>
 
 </a>
 
@@ -900,7 +913,7 @@ Design graphics and images.
 
 <footer>
 
-⚡ My Gaming Hub • Made with HTML
+⚡ My Gaming Hub • Custom games powered by JavaScript
 
 </footer>
 
@@ -909,171 +922,681 @@ Design graphics and images.
 
 /* ================= CLOCK ================= */
 
-function updateClock() {
+function updateClock(){
 
-    const now = new Date();
+const now=new Date();
 
-    document.getElementById("clock").textContent =
-        "🕐 " + now.toLocaleTimeString();
+document.getElementById("clock").textContent=
+"🕐 "+now.toLocaleTimeString();
 
 }
 
 setInterval(updateClock,1000);
-
 updateClock();
 
 
 /* ================= THEME ================= */
 
-function toggleTheme() {
+function toggleTheme(){
 
-    document.body.classList.toggle("light");
+document.body.classList.toggle("light");
 
-    const isLight =
-        document.body.classList.contains("light");
+const light=document.body.classList.contains("light");
 
-    const button =
-        document.getElementById("themeButton");
+document.getElementById("themeButton").textContent=
+light?"☀️ Light":"🌙 Dark";
 
-    if(isLight) {
+localStorage.setItem("theme",light?"light":"dark");
 
-        button.textContent = "☀️ Light";
+}
 
-        localStorage.setItem("theme","light");
+if(localStorage.getItem("theme")==="light"){
 
-    } else {
+document.body.classList.add("light");
 
-        button.textContent = "🌙 Dark";
-
-        localStorage.setItem("theme","dark");
-
-    }
+document.getElementById("themeButton").textContent="☀️ Light";
 
 }
 
 
-/* LOAD SAVED THEME */
+/* ================= FILTER ================= */
 
-if(localStorage.getItem("theme") === "light") {
+let currentCategory="all";
 
-    document.body.classList.add("light");
+function filterCategory(category,button){
 
-    document.getElementById("themeButton").textContent =
-        "☀️ Light";
+currentCategory=category;
+
+document.querySelectorAll(".filter-btn").forEach(b=>{
+b.classList.remove("active");
+});
+
+button.classList.add("active");
+
+applyFilters();
+
+}
+
+function applyFilters(){
+
+const search=
+document.getElementById("search").value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+const category=card.dataset.category;
+
+const matchesCategory=
+currentCategory==="all"||
+category===currentCategory;
+
+const matchesSearch=
+card.innerText.toLowerCase().includes(search);
+
+card.classList.toggle(
+"hidden",
+!(matchesCategory&&matchesSearch)
+);
+
+});
+
+document.querySelectorAll(".section-title").forEach(title=>{
+
+const cat=title.className
+.split(" ")
+.find(x=>x.startsWith("category-"));
+
+if(!cat)return;
+
+const category=cat.replace("category-","");
+
+const visible=
+document.querySelectorAll(
+".card.category-"+category+
+":not(.hidden)"
+).length;
+
+if(currentCategory!=="all"&&visible===0)
+title.classList.add("hidden");
+else
+title.classList.remove("hidden");
+
+});
 
 }
 
 
-/* ================= CATEGORY FILTER ================= */
+/* ================= GAME SYSTEM ================= */
 
-let currentCategory = "all";
+const area=document.getElementById("gameArea");
 
-function filterCategory(category, button) {
+function showGame(html){
 
-    currentCategory = category;
+area.innerHTML=html;
 
-    document
-        .querySelectorAll(".filter-btn")
-        .forEach(btn => {
+area.classList.add("show");
 
-            btn.classList.remove("active");
+area.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
 
-        });
+}
 
-    button.classList.add("active");
+function closeGame(){
 
-    applyFilters();
+area.classList.remove("show");
+
+area.innerHTML="";
 
 }
 
 
-/* ================= SEARCH ================= */
+/* ================= REACTION RUSH ================= */
 
-function searchLinks() {
+let reactionTimer;
+let reactionStart;
 
-    applyFilters();
+function startReaction(){
+
+clearTimeout(reactionTimer);
+
+showGame(`
+
+<h2>⚡ Reaction Rush</h2>
+
+<p>Wait for the button to turn GREEN.</p>
+
+<div class="score" id="reactionScore">
+Get ready...
+</div>
+
+<button
+id="reactionButton"
+class="big-game-button"
+onclick="reactionClick()">
+WAIT...
+</button>
+
+<button class="back-button" onclick="closeGame()">
+Close
+</button>
+
+`);
+
+document.getElementById("reactionButton").disabled=true;
+
+reactionTimer=setTimeout(()=>{
+
+const btn=document.getElementById("reactionButton");
+
+if(!btn)return;
+
+btn.disabled=false;
+btn.classList.add("success-button");
+btn.textContent="CLICK NOW!";
+
+reactionStart=performance.now();
+
+},Math.random()*4000+1500);
+
+}
+
+function reactionClick(){
+
+const time=Math.round(performance.now()-reactionStart);
+
+document.getElementById("reactionScore").textContent=
+"🔥 "+time+" ms!";
+
+document.getElementById("reactionButton").textContent=
+"PLAY AGAIN";
+
+document.getElementById("reactionButton").onclick=
+startReaction;
+
+saveScore("reaction",time);
 
 }
 
 
-function applyFilters() {
+/* ================= ZOMBIE CLICKER ================= */
 
-    const search =
-        document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+let zombieHP=100;
+let zombieScore=0;
 
-    const cards =
-        document.querySelectorAll(".card");
+function startZombie(){
 
-    cards.forEach(card => {
+zombieHP=100;
+zombieScore=0;
 
-        const text =
-            card.innerText.toLowerCase();
+showGame(`
 
-        const cardCategory =
-            card.dataset.category;
+<h2>🧟 Zombie Clicker</h2>
 
-        const categoryMatch =
-            currentCategory === "all" ||
-            cardCategory === currentCategory;
+<p>CLICK THE ZOMBIE!</p>
 
-        const searchMatch =
-            text.includes(search);
+<div class="score">
+HP: <span id="zombieHP">100</span>
+</div>
 
-        if(categoryMatch && searchMatch) {
+<button
+class="big-game-button danger-button"
+id="zombieButton"
+onclick="hitZombie()">
+🧟 HIT!
+</button>
 
-            card.classList.remove("hidden");
+<div class="game-message" id="zombieMessage">
+Damage: 10
+</div>
 
-        } else {
+<button class="back-button" onclick="closeGame()">
+Close
+</button>
 
-            card.classList.add("hidden");
+`);
 
-        }
+}
 
-    });
+function hitZombie(){
+
+const damage=Math.floor(Math.random()*15)+5;
+
+zombieHP-=damage;
+
+if(zombieHP<=0){
+
+zombieScore++;
+
+zombieHP=100;
+
+document.getElementById("zombieMessage").textContent=
+"💥 ZOMBIE DEFEATED! Score: "+zombieScore;
+
+}else{
+
+document.getElementById("zombieMessage").textContent=
+"💥 -"+damage+" HP!";
+
+}
+
+document.getElementById("zombieHP").textContent=zombieHP;
+
+saveScore("zombie",zombieScore);
+
+}
 
 
-    /* Hide empty section headings */
+/* ================= METEOR DODGE ================= */
 
-    document
-        .querySelectorAll(".section-title")
-        .forEach(title => {
+let dodgeInterval;
+let dodgeTime=0;
+let playerX=50;
+let playerY=85;
 
-            const category =
-                title.className
-                .split(" ")
-                .find(x =>
-                    x.startsWith("category-")
-                );
+function startDodge(){
 
-            if(!category) return;
+clearInterval(dodgeInterval);
 
-            const categoryName =
-                category.replace("category-","");
+showGame(`
 
-            const visibleCards =
-                document.querySelectorAll(
-                    ".card.category-" +
-                    categoryName +
-                    ":not(.hidden)"
-                );
+<h2>☄️ Meteor Dodge</h2>
 
-            if(
-                visibleCards.length === 0 &&
-                currentCategory !== "all"
-            ) {
+<p>Use <b>WASD</b> or arrow keys to dodge.</p>
 
-                title.classList.add("hidden");
+<div class="score">
+Time: <span id="dodgeScore">0</span>s
+</div>
 
-            } else {
+<div class="aim-board" id="dodgeBoard">
 
-                title.classList.remove("hidden");
+<div
+class="player"
+id="player"
+style="left:50%;top:85%">
+</div>
 
-            }
+</div>
 
-        });
+<button class="back-button" onclick="closeDodge()">
+Stop
+</button>
+
+`);
+
+dodgeTime=0;
+
+document.onkeydown=dodgeMove;
+
+dodgeInterval=setInterval(()=>{
+
+dodgeTime++;
+
+document.getElementById("dodgeScore").textContent=dodgeTime;
+
+spawnMeteor();
+
+},1000);
+
+}
+
+function spawnMeteor(){
+
+const board=document.getElementById("dodgeBoard");
+
+if(!board)return;
+
+const meteor=document.createElement("div");
+
+meteor.className="meteor";
+
+meteor.style.left=Math.random()*90+"%";
+
+meteor.style.top="-30px";
+
+board.appendChild(meteor);
+
+let y=-30;
+
+const fall=setInterval(()=>{
+
+y+=4;
+
+meteor.style.top=y+"px";
+
+const p=document.getElementById("player");
+
+if(!p){
+clearInterval(fall);
+return;
+}
+
+const a=meteor.getBoundingClientRect();
+const b=p.getBoundingClientRect();
+
+if(
+a.left<b.right&&
+a.right>b.left&&
+a.top<b.bottom&&
+a.bottom>b.top
+){
+
+clearInterval(fall);
+
+clearInterval(dodgeInterval);
+
+alert("💥 YOU GOT HIT! You survived "+dodgeTime+" seconds.");
+
+saveScore("dodge",dodgeTime);
+
+startDodge();
+
+}
+
+if(y>330){
+
+clearInterval(fall);
+meteor.remove();
+
+}
+
+},30);
+
+}
+
+function dodgeMove(e){
+
+const p=document.getElementById("player");
+
+if(!p)return;
+
+const step=5;
+
+if(e.key==="ArrowLeft"||e.key.toLowerCase()==="a")
+playerX-=step;
+
+if(e.key==="ArrowRight"||e.key.toLowerCase()==="d")
+playerX+=step;
+
+if(e.key==="ArrowUp"||e.key.toLowerCase()==="w")
+playerY-=step;
+
+if(e.key==="ArrowDown"||e.key.toLowerCase()==="s")
+playerY+=step;
+
+playerX=Math.max(2,Math.min(95,playerX));
+playerY=Math.max(2,Math.min(90,playerY));
+
+p.style.left=playerX+"%";
+p.style.top=playerY+"%";
+
+}
+
+function closeDodge(){
+
+clearInterval(dodgeInterval);
+
+document.onkeydown=null;
+
+closeGame();
+
+}
+
+
+/* ================= AIM TRAINER ================= */
+
+let aimScore=0;
+let aimTime;
+
+function startAim(){
+
+aimScore=0;
+
+showGame(`
+
+<h2>🎯 Aim Trainer</h2>
+
+<p>Hit as many targets as possible in 20 seconds!</p>
+
+<div class="score">
+Score: <span id="aimScore">0</span>
+</div>
+
+<div class="aim-board" id="aimBoard"></div>
+
+<button class="back-button" onclick="closeAim()">
+Stop
+</button>
+
+`);
+
+aimTime=20;
+
+spawnTarget();
+
+let countdown=setInterval(()=>{
+
+if(!document.getElementById("aimBoard")){
+
+clearInterval(countdown);
+return;
+
+}
+
+aimTime--;
+
+if(aimTime<=0){
+
+clearInterval(countdown);
+
+alert("🎯 Time! Score: "+aimScore);
+
+saveScore("aim",aimScore);
+
+closeAim();
+
+}
+
+},1000);
+
+}
+
+function spawnTarget(){
+
+const board=document.getElementById("aimBoard");
+
+if(!board)return;
+
+const old=document.querySelector(".target");
+
+if(old)old.remove();
+
+const target=document.createElement("div");
+
+target.className="target";
+
+target.style.left=
+Math.random()*85+"%";
+
+target.style.top=
+Math.random()*80+"%";
+
+target.onclick=()=>{
+
+aimScore++;
+
+document.getElementById("aimScore").textContent=aimScore;
+
+spawnTarget();
+
+};
+
+board.appendChild(target);
+
+}
+
+function closeAim(){
+
+closeGame();
+
+}
+
+
+/* ================= QUIZ ================= */
+
+const questions=[
+
+{
+q:"Which Minecraft version is Eaglercraft commonly based on?",
+a:["1.12.2","1.20.1","1.7.10","1.5"],
+c:0
+},
+
+{
+q:"Which block is normally used to make a Nether portal frame?",
+a:["Diamond","Obsidian","Bedrock","Quartz"],
+c:1
+},
+
+{
+q:"Which mob explodes?",
+a:["Zombie","Skeleton","Creeper","Spider"],
+c:2
+},
+
+{
+q:"What do you use to enchant items?",
+a:["Anvil","Furnace","Enchanting Table","Crafting Table"],
+c:2
+},
+
+{
+q:"Which dimension contains the Ender Dragon?",
+a:["Nether","Overworld","End","Deep Dark"],
+c:2
+}
+
+];
+
+let quizIndex=0;
+let quizScore=0;
+
+function startQuiz(){
+
+quizIndex=0;
+quizScore=0;
+
+showQuestion();
+
+}
+
+function showQuestion(){
+
+const q=questions[quizIndex];
+
+let html=`
+
+<h2>🧠 Minecraft Quiz</h2>
+
+<p>
+Question ${quizIndex+1}/${questions.length}
+</p>
+
+<h3>${q.q}</h3>
+
+`;
+
+q.a.forEach((answer,i)=>{
+
+html+=`
+
+<button
+class="quiz-option"
+onclick="answerQuiz(${i})">
+${answer}
+</button>
+
+`;
+
+});
+
+html+=`
+
+<div class="score">
+Score: ${quizScore}
+</div>
+
+<button class="back-button" onclick="closeGame()">
+Quit
+</button>
+
+`;
+
+showGame(html);
+
+}
+
+function answerQuiz(answer){
+
+if(answer===questions[quizIndex].c)
+quizScore++;
+
+quizIndex++;
+
+if(quizIndex>=questions.length){
+
+saveScore("quiz",quizScore);
+
+showGame(`
+
+<h2>🏆 Quiz Complete!</h2>
+
+<div class="score">
+You scored ${quizScore}/${questions.length}
+</div>
+
+<button
+class="big-game-button"
+onclick="startQuiz()">
+Play Again
+</button>
+
+<button class="back-button" onclick="closeGame()">
+Close
+</button>
+
+`);
+
+return;
+
+}
+
+showQuestion();
+
+}
+
+
+/* ================= HIGH SCORES ================= */
+
+function saveScore(game,score){
+
+let scores=
+JSON.parse(localStorage.getItem("gameScores")||"{}");
+
+if(
+scores[game]===undefined||
+score>scores[game]
+){
+
+scores[game]=score;
+
+localStorage.setItem(
+"gameScores",
+JSON.stringify(scores)
+);
+
+}
 
 }
 
