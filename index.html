@@ -1,30 +1,431 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>⚡ My Gaming Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at top left, #172554 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #3b0764 0%, transparent 35%),
+        #070b14;
+    min-height: 100vh;
+}
+
+/* TOP BAR */
+
+header {
+    padding: 35px 20px 25px;
+    text-align: center;
+    background: rgba(10,15,30,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+header p {
+    color: #9ca3af;
+    margin-top: 10px;
+}
+
+/* SEARCH */
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+.search input {
+    width: min(600px,90%);
+    padding: 15px 20px;
+    border-radius: 14px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    outline: none;
+    font-size: 16px;
+}
+
+.search input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 20px rgba(96,165,250,.25);
+}
+
+/* MAIN */
+
+.container {
+    width: min(1200px,92%);
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.section-title {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 16px;
+}
+
+.card {
+    text-decoration: none;
+    color: white;
+    background: rgba(15,23,42,.85);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
+    padding: 22px;
+    transition: .2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: #60a5fa;
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    margin: 5px 0;
+    font-size: 19px;
+}
+
+.card p {
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 6px 0 0;
+}
+
+/* SPECIAL CARDS */
+
+.featured {
+    background:
+        linear-gradient(135deg,rgba(37,99,235,.25),rgba(124,58,237,.2)),
+        #0f172a;
+}
+
+.green:hover {
+    border-color: #22c55e;
+}
+
+.purple:hover {
+    border-color: #a855f7;
+}
+
+.orange:hover {
+    border-color: #f97316;
+}
+
+/* CLOCK */
+
+.clock {
+    text-align: center;
+    margin: 20px;
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<h1>⚡ My Dashboard</h1>
+<header>
 
-<h2>🎮 Gaming</h2>
+<h1>⚡ MY GAMING HUB</h1>
 
-<a href="https://minecraft.net">Minecraft</a>
-<br><br>
+<p>Games • Minecraft • Clients • Tools • Everything I use</p>
 
-<a href="https://modrinth.com/">Modrinth</a>
-<br><br>
+<div class="search">
+<input
+id="search"
+type="text"
+placeholder="🔍 Search my links..."
+onkeyup="searchLinks()">
+</div>
 
-<a href="https://bloxd.io/">Bloxd.io</a>
-<br><br>
+<div class="clock" id="clock"></div>
 
-<h2>🔗 Important Links</h2>
+</header>
 
-<a href="https://youtube.com/">YouTube</a>
-<br><br>
 
-<a href="https://discord.com/">Discord</a>
+<div class="container">
+
+
+<!-- ================= GAMES ================= -->
+
+<h2 class="section-title">🎮 Games</h2>
+
+<div class="grid">
+
+<a class="card featured" href="https://miniblox.io/" target="_blank">
+<div class="icon">🟦</div>
+<h3>Miniblox</h3>
+<p>Play Minecraft-style multiplayer in your browser.</p>
+</a>
+
+<a class="card featured" href="https://bloxd.io/" target="_blank">
+<div class="icon">🟩</div>
+<h3>Bloxd.io</h3>
+<p>Build, survive and play tons of game modes.</p>
+</a>
+
+<a class="card featured" href="https://eaglercraft.com/" target="_blank">
+<div class="icon">🦅</div>
+<h3>Eaglercraft</h3>
+<p>Play Minecraft directly in your browser.</p>
+</a>
+
+<a class="card featured" href="https://bobthebuilderb.github.io/eaglercraft-1.12.2/" target="_blank">
+<div class="icon">⛏️</div>
+<h3>Eaglercraft 1.12.2</h3>
+<p>Browser Minecraft 1.12.2.</p>
+</a>
+
+</div>
+
+
+<!-- ================= CLIENTS ================= -->
+
+<h2 class="section-title">⚔️ Minecraft Clients</h2>
+
+<div class="grid">
+
+<a class="card purple" href="https://github.com/TuffNetwork/Tuff-Client-Builds/releases" target="_blank">
+<div class="icon">🔥</div>
+<h3>Tuff Client</h3>
+<p>1.12 Eaglercraft client with extra features.</p>
+</a>
+
+<a class="card purple" href="https://itzpulsev2.github.io/" target="_blank">
+<div class="icon">🚀</div>
+<h3>Eaglercraft Launcher</h3>
+<p>Launcher with multiple browser clients.</p>
+</a>
+
+<a class="card purple" href="https://modrinth.com/" target="_blank">
+<div class="icon">🧩</div>
+<h3>Modrinth</h3>
+<p>Mods, plugins, shaders and resource packs.</p>
+</a>
+
+<a class="card purple" href="https://www.minecraft.net/" target="_blank">
+<div class="icon">🟫</div>
+<h3>Minecraft</h3>
+<p>Official Minecraft website.</p>
+</a>
+
+</div>
+
+
+<!-- ================= MINECRAFT TOOLS ================= -->
+
+<h2 class="section-title">🛠️ Minecraft Stuff</h2>
+
+<div class="grid">
+
+<a class="card green" href="https://modrinth.com/mods" target="_blank">
+<div class="icon">🧱</div>
+<h3>Minecraft Mods</h3>
+<p>Browse Minecraft mods.</p>
+</a>
+
+<a class="card green" href="https://modrinth.com/plugins" target="_blank">
+<div class="icon">🔌</div>
+<h3>Plugins</h3>
+<p>Find plugins for Minecraft servers.</p>
+</a>
+
+<a class="card green" href="https://modrinth.com/shaders" target="_blank">
+<div class="icon">✨</div>
+<h3>Shaders</h3>
+<p>Make Minecraft look better.</p>
+</a>
+
+<a class="card green" href="https://modrinth.com/resourcepacks" target="_blank">
+<div class="icon">🎨</div>
+<h3>Resource Packs</h3>
+<p>Change Minecraft textures.</p>
+</a>
+
+<a class="card green" href="https://modrinth.com/datapacks" target="_blank">
+<div class="icon">📦</div>
+<h3>Data Packs</h3>
+<p>Customize Minecraft worlds.</p>
+</a>
+
+<a class="card green" href="https://github.com/" target="_blank">
+<div class="icon">💻</div>
+<h3>GitHub</h3>
+<p>Code, projects and repositories.</p>
+</a>
+
+</div>
+
+
+<!-- ================= INTERNET ================= -->
+
+<h2 class="section-title">🌐 Important Websites</h2>
+
+<div class="grid">
+
+<a class="card orange" href="https://www.youtube.com/" target="_blank">
+<div class="icon">▶️</div>
+<h3>YouTube</h3>
+<p>Videos, tutorials and entertainment.</p>
+</a>
+
+<a class="card orange" href="https://discord.com/" target="_blank">
+<div class="icon">💬</div>
+<h3>Discord</h3>
+<p>Chat and gaming communities.</p>
+</a>
+
+<a class="card orange" href="https://www.google.com/" target="_blank">
+<div class="icon">🔎</div>
+<h3>Google</h3>
+<p>Search the web.</p>
+</a>
+
+<a class="card orange" href="https://chatgpt.com/" target="_blank">
+<div class="icon">🤖</div>
+<h3>ChatGPT</h3>
+<p>AI assistant.</p>
+</a>
+
+</div>
+
+
+<!-- ================= TOOLS ================= -->
+
+<h2 class="section-title">🔧 Useful Tools</h2>
+
+<div class="grid">
+
+<a class="card" href="https://www.google.com/search?q=calculator" target="_blank">
+<div class="icon">🧮</div>
+<h3>Calculator</h3>
+<p>Quick calculations.</p>
+</a>
+
+<a class="card" href="https://www.speedtest.net/" target="_blank">
+<div class="icon">⚡</div>
+<h3>Speed Test</h3>
+<p>Check your internet speed.</p>
+</a>
+
+<a class="card" href="https://www.remove.bg/" target="_blank">
+<div class="icon">🖼️</div>
+<h3>Remove Background</h3>
+<p>Remove image backgrounds.</p>
+</a>
+
+<a class="card" href="https://www.canva.com/" target="_blank">
+<div class="icon">🎨</div>
+<h3>Canva</h3>
+<p>Design graphics and images.</p>
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+⚡ My Gaming Hub • Made with HTML
+</footer>
+
+
+<script>
+
+/* CLOCK */
+
+function updateClock() {
+
+    const now = new Date();
+
+    document.getElementById("clock").textContent =
+        "🕐 " + now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+
+/* SEARCH */
+
+function searchLinks() {
+
+    const input =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        if(text.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
