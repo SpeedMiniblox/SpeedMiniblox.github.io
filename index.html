@@ -7,36 +7,99 @@
 <title>⚡ My Gaming Hub</title>
 
 <style>
+
 * {
     box-sizing: border-box;
+    transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s;
 }
 
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+
     background:
         radial-gradient(circle at top left, #172554 0%, transparent 35%),
         radial-gradient(circle at bottom right, #3b0764 0%, transparent 35%),
         #070b14;
+
     min-height: 100vh;
 }
 
-/* TOP BAR */
+/* LIGHT MODE */
+
+body.light {
+    color: #111827;
+
+    background:
+        radial-gradient(circle at top left, #bfdbfe 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #ddd6fe 0%, transparent 35%),
+        #f1f5f9;
+}
+
+body.light header {
+    background: rgba(255,255,255,.75);
+    border-bottom-color: rgba(0,0,0,.1);
+}
+
+body.light header p,
+body.light .clock {
+    color: #64748b;
+}
+
+body.light .card {
+    background: rgba(255,255,255,.8);
+    border-color: rgba(0,0,0,.1);
+}
+
+body.light .card p {
+    color: #64748b;
+}
+
+body.light .search input {
+    background: white;
+    color: #111827;
+    border-color: #cbd5e1;
+}
+
+body.light footer {
+    color: #64748b;
+    border-top-color: rgba(0,0,0,.1);
+}
+
+body.light .filter-btn {
+    background: rgba(255,255,255,.8);
+    color: #334155;
+    border-color: #cbd5e1;
+}
+
+/* HEADER */
 
 header {
-    padding: 35px 20px 25px;
+    padding: 30px 20px 25px;
     text-align: center;
-    background: rgba(10,15,30,0.75);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+
+    background: rgba(10,15,30,.75);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+
+    backdrop-filter: blur(12px);
 }
 
 header h1 {
     margin: 0;
+
     font-size: 42px;
-    background: linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);
+
+    background: linear-gradient(
+        90deg,
+        #60a5fa,
+        #a78bfa,
+        #f472b6
+    );
+
     -webkit-background-clip: text;
+    background-clip: text;
+
     color: transparent;
 }
 
@@ -45,83 +108,217 @@ header p {
     margin-top: 10px;
 }
 
+/* THEME BUTTON */
+
+.theme-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    border: 1px solid #334155;
+
+    background: #0f172a;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.theme-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(96,165,250,.3);
+}
+
+body.light .theme-button {
+    background: white;
+    color: #111827;
+    border-color: #cbd5e1;
+}
+
+/* CATEGORY FILTERS */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 20px auto 5px;
+
+    max-width: 900px;
+}
+
+.filter-btn {
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid #334155;
+
+    background: #0f172a;
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    border-color: #60a5fa;
+}
+
+.filter-btn.active {
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color: white;
+
+    border-color: transparent;
+
+    box-shadow: 0 5px 20px rgba(59,130,246,.25);
+}
+
 /* SEARCH */
 
 .search {
     display: flex;
     justify-content: center;
+
     margin: 25px auto;
 }
 
 .search input {
     width: min(600px,90%);
+
     padding: 15px 20px;
+
     border-radius: 14px;
+
     border: 1px solid #334155;
+
     background: #0f172a;
+
     color: white;
+
     outline: none;
+
     font-size: 16px;
 }
 
 .search input:focus {
     border-color: #60a5fa;
-    box-shadow: 0 0 20px rgba(96,165,250,.25);
+
+    box-shadow:
+        0 0 20px rgba(96,165,250,.25);
+}
+
+/* CLOCK */
+
+.clock {
+    text-align: center;
+
+    margin: 15px;
+
+    color: #94a3b8;
+
+    font-size: 15px;
 }
 
 /* MAIN */
 
 .container {
     width: min(1200px,92%);
+
     margin: auto;
+
     padding-bottom: 50px;
 }
 
 .section-title {
     margin-top: 35px;
     margin-bottom: 15px;
+
     font-size: 24px;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(210px,1fr));
+
+    gap: 16px;
 }
 
 /* CARDS */
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-    gap: 16px;
-}
-
 .card {
     text-decoration: none;
+
     color: white;
+
     background: rgba(15,23,42,.85);
+
     border: 1px solid rgba(255,255,255,.08);
+
     border-radius: 18px;
+
     padding: 22px;
+
     transition: .2s;
+
     position: relative;
+
     overflow: hidden;
+
+    display: block;
+}
+
+body.light .card {
+    color: #111827;
 }
 
 .card:hover {
     transform: translateY(-6px) scale(1.02);
+
     border-color: #60a5fa;
-    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.35);
 }
 
 .icon {
     font-size: 38px;
+
     margin-bottom: 12px;
 }
 
 .card h3 {
     margin: 5px 0;
+
     font-size: 19px;
 }
 
 .card p {
     color: #94a3b8;
+
     font-size: 14px;
+
     margin: 6px 0 0;
 }
 
@@ -129,8 +326,22 @@ header p {
 
 .featured {
     background:
-        linear-gradient(135deg,rgba(37,99,235,.25),rgba(124,58,237,.2)),
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.25),
+            rgba(124,58,237,.2)
+        ),
         #0f172a;
+}
+
+body.light .featured {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(96,165,250,.2),
+            rgba(167,139,250,.2)
+        ),
+        white;
 }
 
 .green:hover {
@@ -145,31 +356,48 @@ header p {
     border-color: #f97316;
 }
 
-/* CLOCK */
+/* HIDDEN */
 
-.clock {
-    text-align: center;
-    margin: 20px;
-    color: #94a3b8;
-    font-size: 15px;
+.hidden {
+    display: none !important;
 }
 
 /* FOOTER */
 
 footer {
     text-align: center;
+
     padding: 30px;
+
     color: #64748b;
-    border-top: 1px solid rgba(255,255,255,.08);
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
 }
 
 /* MOBILE */
 
 @media(max-width:600px) {
+
     header h1 {
         font-size: 32px;
     }
+
+    .theme-button {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        margin-bottom: 15px;
+    }
+
+    .filters {
+        padding: 0 10px;
+    }
+
 }
+
 </style>
 </head>
 
@@ -177,17 +405,59 @@ footer {
 
 <header>
 
+<button class="theme-button" onclick="toggleTheme()" id="themeButton">
+🌙 Dark
+</button>
+
 <h1>⚡ MY GAMING HUB</h1>
 
 <p>Games • Minecraft • Clients • Tools • Everything I use</p>
 
+
+<!-- CATEGORY FILTERS -->
+
+<div class="filters">
+
+<button class="filter-btn active"
+onclick="filterCategory('all', this)">
+🏠 All
+</button>
+
+<button class="filter-btn"
+onclick="filterCategory('games', this)">
+🎮 Games
+</button>
+
+<button class="filter-btn"
+onclick="filterCategory('minecraft', this)">
+⛏️ Minecraft
+</button>
+
+<button class="filter-btn"
+onclick="filterCategory('tools', this)">
+🛠️ Tools
+</button>
+
+<button class="filter-btn"
+onclick="filterCategory('websites', this)">
+🌐 Websites
+</button>
+
+</div>
+
+
+<!-- SEARCH -->
+
 <div class="search">
+
 <input
 id="search"
 type="text"
 placeholder="🔍 Search my links..."
 onkeyup="searchLinks()">
+
 </div>
+
 
 <div class="clock" id="clock"></div>
 
@@ -199,32 +469,78 @@ onkeyup="searchLinks()">
 
 <!-- ================= GAMES ================= -->
 
-<h2 class="section-title">🎮 Games</h2>
+<h2 class="section-title category-games">
+🎮 Games
+</h2>
 
 <div class="grid">
 
-<a class="card featured" href="https://miniblox.io/" target="_blank">
+
+<a
+class="card featured category-games"
+data-category="games"
+href="https://miniblox.io/"
+target="_blank">
+
 <div class="icon">🟦</div>
+
 <h3>Miniblox</h3>
-<p>Play Minecraft-style multiplayer in your browser.</p>
+
+<p>
+Play Minecraft-style multiplayer in your browser.
+</p>
+
 </a>
 
-<a class="card featured" href="https://bloxd.io/" target="_blank">
+
+<a
+class="card featured category-games"
+data-category="games"
+href="https://bloxd.io/"
+target="_blank">
+
 <div class="icon">🟩</div>
+
 <h3>Bloxd.io</h3>
-<p>Build, survive and play tons of game modes.</p>
+
+<p>
+Build, survive and play tons of game modes.
+</p>
+
 </a>
 
-<a class="card featured" href="https://eaglercraft.com/" target="_blank">
+
+<a
+class="card featured category-games"
+data-category="games"
+href="https://eaglercraft.com/"
+target="_blank">
+
 <div class="icon">🦅</div>
+
 <h3>Eaglercraft</h3>
-<p>Play Minecraft directly in your browser.</p>
+
+<p>
+Play Minecraft directly in your browser.
+</p>
+
 </a>
 
-<a class="card featured" href="https://bobthebuilderb.github.io/eaglercraft-1.12.2/" target="_blank">
+
+<a
+class="card featured category-games"
+data-category="games"
+href="https://bobthebuilderb.github.io/eaglercraft-1.12.2/"
+target="_blank">
+
 <div class="icon">⛏️</div>
+
 <h3>Eaglercraft 1.12.2</h3>
-<p>Browser Minecraft 1.12.2.</p>
+
+<p>
+Browser Minecraft 1.12.2.
+</p>
+
 </a>
 
 </div>
@@ -232,110 +548,270 @@ onkeyup="searchLinks()">
 
 <!-- ================= CLIENTS ================= -->
 
-<h2 class="section-title">⚔️ Minecraft Clients</h2>
+<h2 class="section-title category-minecraft">
+⚔️ Minecraft Clients
+</h2>
 
 <div class="grid">
 
-<a class="card purple" href="https://github.com/TuffNetwork/Tuff-Client-Builds/releases" target="_blank">
+
+<a
+class="card purple category-minecraft"
+data-category="minecraft"
+href="https://github.com/TuffNetwork/Tuff-Client-Builds/releases"
+target="_blank">
+
 <div class="icon">🔥</div>
+
 <h3>Tuff Client</h3>
-<p>1.12 Eaglercraft client with extra features.</p>
+
+<p>
+1.12 Eaglercraft client with extra features.
+</p>
+
 </a>
 
-<a class="card purple" href="https://itzpulsev2.github.io/" target="_blank">
+
+<a
+class="card purple category-minecraft"
+data-category="minecraft"
+href="https://itzpulsev2.github.io/"
+target="_blank">
+
 <div class="icon">🚀</div>
+
 <h3>Eaglercraft Launcher</h3>
-<p>Launcher with multiple browser clients.</p>
+
+<p>
+Launcher with multiple browser clients.
+</p>
+
 </a>
 
-<a class="card purple" href="https://modrinth.com/" target="_blank">
+
+<a
+class="card purple category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/"
+target="_blank">
+
 <div class="icon">🧩</div>
+
 <h3>Modrinth</h3>
-<p>Mods, plugins, shaders and resource packs.</p>
+
+<p>
+Mods, plugins, shaders and resource packs.
+</p>
+
 </a>
 
-<a class="card purple" href="https://www.minecraft.net/" target="_blank">
+
+<a
+class="card purple category-minecraft"
+data-category="minecraft"
+href="https://www.minecraft.net/"
+target="_blank">
+
 <div class="icon">🟫</div>
+
 <h3>Minecraft</h3>
-<p>Official Minecraft website.</p>
+
+<p>
+Official Minecraft website.
+</p>
+
 </a>
 
 </div>
 
 
-<!-- ================= MINECRAFT TOOLS ================= -->
+<!-- ================= MINECRAFT STUFF ================= -->
 
-<h2 class="section-title">🛠️ Minecraft Stuff</h2>
+<h2 class="section-title category-minecraft">
+🛠️ Minecraft Stuff
+</h2>
 
 <div class="grid">
 
-<a class="card green" href="https://modrinth.com/mods" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/mods"
+target="_blank">
+
 <div class="icon">🧱</div>
+
 <h3>Minecraft Mods</h3>
-<p>Browse Minecraft mods.</p>
+
+<p>
+Browse Minecraft mods.
+</p>
+
 </a>
 
-<a class="card green" href="https://modrinth.com/plugins" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/plugins"
+target="_blank">
+
 <div class="icon">🔌</div>
+
 <h3>Plugins</h3>
-<p>Find plugins for Minecraft servers.</p>
+
+<p>
+Find plugins for Minecraft servers.
+</p>
+
 </a>
 
-<a class="card green" href="https://modrinth.com/shaders" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/shaders"
+target="_blank">
+
 <div class="icon">✨</div>
+
 <h3>Shaders</h3>
-<p>Make Minecraft look better.</p>
+
+<p>
+Make Minecraft look better.
+</p>
+
 </a>
 
-<a class="card green" href="https://modrinth.com/resourcepacks" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/resourcepacks"
+target="_blank">
+
 <div class="icon">🎨</div>
+
 <h3>Resource Packs</h3>
-<p>Change Minecraft textures.</p>
+
+<p>
+Change Minecraft textures.
+</p>
+
 </a>
 
-<a class="card green" href="https://modrinth.com/datapacks" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://modrinth.com/datapacks"
+target="_blank">
+
 <div class="icon">📦</div>
+
 <h3>Data Packs</h3>
-<p>Customize Minecraft worlds.</p>
+
+<p>
+Customize Minecraft worlds.
+</p>
+
 </a>
 
-<a class="card green" href="https://github.com/" target="_blank">
+
+<a
+class="card green category-minecraft"
+data-category="minecraft"
+href="https://github.com/"
+target="_blank">
+
 <div class="icon">💻</div>
+
 <h3>GitHub</h3>
-<p>Code, projects and repositories.</p>
+
+<p>
+Code, projects and repositories.
+</p>
+
 </a>
 
 </div>
 
 
-<!-- ================= INTERNET ================= -->
+<!-- ================= WEBSITES ================= -->
 
-<h2 class="section-title">🌐 Important Websites</h2>
+<h2 class="section-title category-websites">
+🌐 Important Websites
+</h2>
 
 <div class="grid">
 
-<a class="card orange" href="https://www.youtube.com/" target="_blank">
+
+<a
+class="card orange category-websites"
+data-category="websites"
+href="https://www.youtube.com/"
+target="_blank">
+
 <div class="icon">▶️</div>
+
 <h3>YouTube</h3>
-<p>Videos, tutorials and entertainment.</p>
+
+<p>
+Videos, tutorials and entertainment.
+</p>
+
 </a>
 
-<a class="card orange" href="https://discord.com/" target="_blank">
+
+<a
+class="card orange category-websites"
+data-category="websites"
+href="https://discord.com/"
+target="_blank">
+
 <div class="icon">💬</div>
+
 <h3>Discord</h3>
-<p>Chat and gaming communities.</p>
+
+<p>
+Chat and gaming communities.
+</p>
+
 </a>
 
-<a class="card orange" href="https://www.google.com/" target="_blank">
+
+<a
+class="card orange category-websites"
+data-category="websites"
+href="https://www.google.com/"
+target="_blank">
+
 <div class="icon">🔎</div>
+
 <h3>Google</h3>
-<p>Search the web.</p>
+
+<p>
+Search the web.
+</p>
+
 </a>
 
-<a class="card orange" href="https://chatgpt.com/" target="_blank">
+
+<a
+class="card orange category-websites"
+data-category="websites"
+href="https://chatgpt.com/"
+target="_blank">
+
 <div class="icon">🤖</div>
+
 <h3>ChatGPT</h3>
-<p>AI assistant.</p>
+
+<p>
+AI assistant.
+</p>
+
 </a>
 
 </div>
@@ -343,32 +819,78 @@ onkeyup="searchLinks()">
 
 <!-- ================= TOOLS ================= -->
 
-<h2 class="section-title">🔧 Useful Tools</h2>
+<h2 class="section-title category-tools">
+🔧 Useful Tools
+</h2>
 
 <div class="grid">
 
-<a class="card" href="https://www.google.com/search?q=calculator" target="_blank">
+
+<a
+class="card category-tools"
+data-category="tools"
+href="https://www.google.com/search?q=calculator"
+target="_blank">
+
 <div class="icon">🧮</div>
+
 <h3>Calculator</h3>
-<p>Quick calculations.</p>
+
+<p>
+Quick calculations.
+</p>
+
 </a>
 
-<a class="card" href="https://www.speedtest.net/" target="_blank">
+
+<a
+class="card category-tools"
+data-category="tools"
+href="https://www.speedtest.net/"
+target="_blank">
+
 <div class="icon">⚡</div>
+
 <h3>Speed Test</h3>
-<p>Check your internet speed.</p>
+
+<p>
+Check your internet speed.
+</p>
+
 </a>
 
-<a class="card" href="https://www.remove.bg/" target="_blank">
+
+<a
+class="card category-tools"
+data-category="tools"
+href="https://www.remove.bg/"
+target="_blank">
+
 <div class="icon">🖼️</div>
+
 <h3>Remove Background</h3>
-<p>Remove image backgrounds.</p>
+
+<p>
+Remove image backgrounds.
+</p>
+
 </a>
 
-<a class="card" href="https://www.canva.com/" target="_blank">
+
+<a
+class="card category-tools"
+data-category="tools"
+href="https://www.canva.com/"
+target="_blank">
+
 <div class="icon">🎨</div>
+
 <h3>Canva</h3>
-<p>Design graphics and images.</p>
+
+<p>
+Design graphics and images.
+</p>
+
 </a>
 
 </div>
@@ -377,13 +899,15 @@ onkeyup="searchLinks()">
 
 
 <footer>
+
 ⚡ My Gaming Hub • Made with HTML
+
 </footer>
 
 
 <script>
 
-/* CLOCK */
+/* ================= CLOCK ================= */
 
 function updateClock() {
 
@@ -395,15 +919,88 @@ function updateClock() {
 }
 
 setInterval(updateClock,1000);
+
 updateClock();
 
 
-/* SEARCH */
+/* ================= THEME ================= */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("light");
+
+    const isLight =
+        document.body.classList.contains("light");
+
+    const button =
+        document.getElementById("themeButton");
+
+    if(isLight) {
+
+        button.textContent = "☀️ Light";
+
+        localStorage.setItem("theme","light");
+
+    } else {
+
+        button.textContent = "🌙 Dark";
+
+        localStorage.setItem("theme","dark");
+
+    }
+
+}
+
+
+/* LOAD SAVED THEME */
+
+if(localStorage.getItem("theme") === "light") {
+
+    document.body.classList.add("light");
+
+    document.getElementById("themeButton").textContent =
+        "☀️ Light";
+
+}
+
+
+/* ================= CATEGORY FILTER ================= */
+
+let currentCategory = "all";
+
+function filterCategory(category, button) {
+
+    currentCategory = category;
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+    button.classList.add("active");
+
+    applyFilters();
+
+}
+
+
+/* ================= SEARCH ================= */
 
 function searchLinks() {
 
-    const input =
-        document.getElementById("search")
+    applyFilters();
+
+}
+
+
+function applyFilters() {
+
+    const search =
+        document
+        .getElementById("search")
         .value
         .toLowerCase();
 
@@ -415,13 +1012,68 @@ function searchLinks() {
         const text =
             card.innerText.toLowerCase();
 
-        if(text.includes(input)) {
-            card.style.display = "";
+        const cardCategory =
+            card.dataset.category;
+
+        const categoryMatch =
+            currentCategory === "all" ||
+            cardCategory === currentCategory;
+
+        const searchMatch =
+            text.includes(search);
+
+        if(categoryMatch && searchMatch) {
+
+            card.classList.remove("hidden");
+
         } else {
-            card.style.display = "none";
+
+            card.classList.add("hidden");
+
         }
 
     });
+
+
+    /* Hide empty section headings */
+
+    document
+        .querySelectorAll(".section-title")
+        .forEach(title => {
+
+            const category =
+                title.className
+                .split(" ")
+                .find(x =>
+                    x.startsWith("category-")
+                );
+
+            if(!category) return;
+
+            const categoryName =
+                category.replace("category-","");
+
+            const visibleCards =
+                document.querySelectorAll(
+                    ".card.category-" +
+                    categoryName +
+                    ":not(.hidden)"
+                );
+
+            if(
+                visibleCards.length === 0 &&
+                currentCategory !== "all"
+            ) {
+
+                title.classList.add("hidden");
+
+            } else {
+
+                title.classList.remove("hidden");
+
+            }
+
+        });
 
 }
 
